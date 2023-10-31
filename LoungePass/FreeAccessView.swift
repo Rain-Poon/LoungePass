@@ -9,79 +9,87 @@ import SwiftUI
 
 struct FreeAccessView: View {
     var body: some View {
-        ScrollView {
-            // firt lounge
-            ZStack {
-                Image("cathay_lounge")
-                    .resizable(resizingMode: .stretch)
-                    .frame(width: UIScreen.main.bounds.size.width-50, height: 170
-                    )
-                    .cornerRadius(10)
-                    .blur(radius: 2)
-                    .opacity(0.7)
-                VStack() {
-                    
-                    HStack {
-                        Image(systemName: "person.fill")
-                        Text("83")
-                            .fontWeight(.bold)
-                            .foregroundColor(Color.green)
-                        Text("/250")
+        NavigationView {
+            ScrollView {
+                // firt lounge
+                NavigationLink(destination: LoungeDetailView()) {
+                    ZStack {
+                        Image("cathay_lounge")
+                            .resizable(resizingMode: .stretch)
+                            .frame(width: UIScreen.main.bounds.size.width-50, height: 170
+                            )
+                            .cornerRadius(10)
+                            .blur(radius: 2)
+                            .opacity(0.7)
+                        VStack() {
+                            
+                            HStack {
+                                Image(systemName: "person.fill")
+                                    .foregroundColor(.black)
+                                Text("83")
+                                    .fontWeight(.bold)
+                                    .foregroundColor(Color.green)
+                                Text("/250")
+                            }
+                            .padding(5)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 20)
+                                    .stroke(Color.blue, lineWidth: 2)
+                            )
+                            .frame(maxWidth: .infinity, alignment: .trailing)
+                            
+                            Spacer()
+                            Text("CATHAY LOUNGE")
+                                .foregroundColor(.black)
+                                .font(.title2)
+                                .fontWeight(.bold)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        }
+                        .frame(width: UIScreen.main.bounds.width-100, height: 130)
+                        
                     }
-                    .padding(5)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 20)
-                            .stroke(Color.blue, lineWidth: 2)
-                    )
-                    .frame(maxWidth: .infinity, alignment: .trailing)
-                    
-                    Spacer()
-                    Text("CATHAY LOUNGE")
-                        .font(.title2)
-                        .fontWeight(.bold)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.vertical)
                 }
-                .frame(width: UIScreen.main.bounds.width-100, height: 130)
                 
-            }
-            .padding(.vertical)
-            
-            // second lounge
-            ZStack {
-                Image("plaza_premium_lounge")
-                    .resizable(resizingMode: .stretch)
-                    .frame(width: UIScreen.main.bounds.size.width-50, height: 170
-                    )
-                    .cornerRadius(10)
-                    .blur(radius: 2)
-                    .opacity(0.7)
-                VStack() {
-                    
-                    HStack {
-                        Image(systemName: "person.fill")
-                        Text("163")
+                
+                // second lounge
+                ZStack {
+                    Image("plaza_premium_lounge")
+                        .resizable(resizingMode: .stretch)
+                        .frame(width: UIScreen.main.bounds.size.width-50, height: 170
+                        )
+                        .cornerRadius(10)
+                        .blur(radius: 2)
+                        .opacity(0.7)
+                    VStack() {
+                        
+                        HStack {
+                            Image(systemName: "person.fill")
+                            Text("163")
+                                .fontWeight(.bold)
+                                .foregroundColor(Color.orange)
+                            Text("/250")
+                        }
+                        .padding(5)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(Color.blue, lineWidth: 2)
+                        )
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                        
+                        Spacer()
+                        Text("PLAZA PREMIUM LOUNGE")
+                            .font(.title2)
                             .fontWeight(.bold)
-                            .foregroundColor(Color.orange)
-                        Text("/250")
+                            .frame(maxWidth: .infinity, alignment: .leading)
                     }
-                    .padding(5)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 20)
-                            .stroke(Color.blue, lineWidth: 2)
-                    )
-                    .frame(maxWidth: .infinity, alignment: .trailing)
+                    .frame(width: UIScreen.main.bounds.width-100, height: 130)
                     
-                    Spacer()
-                    Text("PLAZA PREMIUM LOUNGE")
-                        .font(.title2)
-                        .fontWeight(.bold)
-                        .frame(maxWidth: .infinity, alignment: .leading)
                 }
-                .frame(width: UIScreen.main.bounds.width-100, height: 130)
-                
+                .padding(.vertical)
             }
-            .padding(.vertical)
         }
+        
     }
 }
 

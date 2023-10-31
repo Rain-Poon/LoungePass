@@ -9,26 +9,92 @@ import SwiftUI
 
 struct HomePageView: View {
     var body: some View {
-        ZStack {
-            VStack {
-                ZStack {
-                    Rectangle()
-                        .fill(.white)
-                        .edgesIgnoringSafeArea(.all)
-                        .frame(height: 50)
-                        .shadow(radius: 2)
-                    HStack {
-                        Image(systemName: "chair.lounge")
-                        Text("LoungePass")
-                            .font(.title2)
-                            .fontWeight(.bold)
+        NavigationView {
+            ZStack {
+                VStack {
+                    ZStack {
+                        Rectangle()
+                            .fill(.white)
+                            .edgesIgnoringSafeArea(.all)
+                            .frame(height: 50)
+                            .shadow(radius: 2)
+                        HStack {
+                            Image(systemName: "chair.lounge")
+                            Text("LoungePass")
+                                .font(.title2)
+                                .fontWeight(.bold)
+                        }
+                        
                     }
-                    
+                    Spacer()
                 }
-                Spacer()
+                VStack {
+                    Text("Your Upcoming Flights")
+                        .font(.title3)
+                        .underline()
+                    ZStack {
+                        Image("hkg_airport")
+                            .resizable(resizingMode: .stretch)
+                            .frame(width: UIScreen.main.bounds.size.width-50, height: 100
+                            )
+                            .cornerRadius(10)
+                            .blur(radius: 2)
+                            .opacity(0.5)
+                        HStack {
+                            Text("03\nJan")
+                                .multilineTextAlignment(.center)
+                            Spacer()
+                            HStack {
+                                Text("HKG")
+                                Image(systemName: "arrow.right")
+                                Text("LHR")
+                            }
+                            Spacer()
+                        }
+                        .frame(width: UIScreen.main.bounds.width-100)
+                        
+                    }
+                    .padding(.vertical)
+                    ZStack {
+                        Image("lhr_airport")
+                            .resizable(resizingMode: .stretch)
+                            .frame(width: UIScreen.main.bounds.size.width-50, height: 100
+                            )
+                            .cornerRadius(10)
+                            .blur(radius: 2)
+                            .opacity(0.5)
+                        HStack {
+                            Text("14\nJan")
+                                .multilineTextAlignment(.center)
+                            Spacer()
+                            HStack {
+                                Text("LHR")
+                                Image(systemName: "arrow.right")
+                                Text("HKG")
+                            }
+                            Spacer()
+                        }
+                        .frame(width: UIScreen.main.bounds.width-100)
+                    }
+                    .padding(.vertical)
+                    Text("Or")
+                        .font(.title3)
+                    
+                    NavigationLink(destination: SearchResultView(), label: {
+                        ZStack {
+                            Rectangle()
+                                .fill(.white)
+                                .frame(width: UIScreen.main.bounds.size.width*0.8, height: 50)
+                                .cornerRadius(20)
+                                .shadow(radius: 2)
+                            Text("Search by Airport")
+                        }
+                        
+                    })
+                    .padding()
+                }
             }
         }
-        
         
     }
 }

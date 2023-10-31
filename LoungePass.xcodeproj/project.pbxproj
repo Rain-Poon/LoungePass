@@ -13,6 +13,7 @@
 		ED86CFB92AF0D8490057B0F9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED86CFB82AF0D8490057B0F9 /* Preview Assets.xcassets */; };
 		ED86CFC52AF0E0FA0057B0F9 /* ItinerarySearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED86CFC42AF0E0FA0057B0F9 /* ItinerarySearch.swift */; };
 		ED86CFC62AF0E0FA0057B0F9 /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED86CFC32AF0E0FA0057B0F9 /* SearchResultView.swift */; };
+		ED86CFCC2AF0F13D0057B0F9 /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED86CFCB2AF0F13D0057B0F9 /* HomePageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		ED86CFB82AF0D8490057B0F9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		ED86CFC32AF0E0FA0057B0F9 /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
 		ED86CFC42AF0E0FA0057B0F9 /* ItinerarySearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItinerarySearch.swift; sourceTree = "<group>"; };
+		ED86CFCB2AF0F13D0057B0F9 /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			isa = PBXGroup;
 			children = (
 				ED86CFC42AF0E0FA0057B0F9 /* ItinerarySearch.swift */,
+				ED86CFCB2AF0F13D0057B0F9 /* HomePageView.swift */,
 				ED86CFC32AF0E0FA0057B0F9 /* SearchResultView.swift */,
 				ED86CFB12AF0D8440057B0F9 /* LoungePassApp.swift */,
 				ED86CFB32AF0D8440057B0F9 /* ContentView.swift */,
@@ -147,6 +150,7 @@
 				ED86CFC62AF0E0FA0057B0F9 /* SearchResultView.swift in Sources */,
 				ED86CFC52AF0E0FA0057B0F9 /* ItinerarySearch.swift in Sources */,
 				ED86CFB22AF0D8440057B0F9 /* LoungePassApp.swift in Sources */,
+				ED86CFCC2AF0F13D0057B0F9 /* HomePageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

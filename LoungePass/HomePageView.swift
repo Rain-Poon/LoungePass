@@ -32,28 +32,37 @@ struct HomePageView: View {
                     Text("Your Upcoming Flights")
                         .font(.title3)
                         .underline()
-                    ZStack {
-                        Image("hkg_airport")
-                            .resizable(resizingMode: .stretch)
-                            .frame(width: UIScreen.main.bounds.size.width-50, height: 100
-                            )
-                            .cornerRadius(10)
-                            .blur(radius: 2)
-                            .opacity(0.5)
-                        HStack {
-                            Text("03\nJan")
-                                .multilineTextAlignment(.center)
-                            Spacer()
+                    NavigationLink(destination:
+                                    SelectBookingView()
+                                   , label: {
+                        ZStack {
+                            Image("hkg_airport")
+                                .resizable(resizingMode: .stretch)
+                                .frame(width: UIScreen.main.bounds.size.width-50, height: 100
+                                )
+                                .cornerRadius(10)
+                                .blur(radius: 2)
+                                .opacity(0.5)
                             HStack {
-                                Text("HKG")
-                                Image(systemName: "arrow.right")
-                                Text("LHR")
+                                Text("03\nJan")
+                                    .foregroundColor(.black)
+                                    .multilineTextAlignment(.center)
+                                Spacer()
+                                HStack {
+                                    Text("HKG")
+                                        .foregroundColor(.black)
+                                    Image(systemName: "arrow.right")
+                                        .foregroundColor(.black)
+                                    Text("LHR")
+                                        .foregroundColor(.black)
+                                }
+                                Spacer()
                             }
-                            Spacer()
+                            .frame(width: UIScreen.main.bounds.width-100)
+                            
                         }
-                        .frame(width: UIScreen.main.bounds.width-100)
-                        
-                    }
+                    })
+                    
                     .padding(.vertical)
                     ZStack {
                         Image("lhr_airport")
@@ -80,7 +89,7 @@ struct HomePageView: View {
                     Text("Or")
                         .font(.title3)
                     
-                    NavigationLink(destination: SearchResultView(), label: {
+                    NavigationLink(destination: SelectBookingView(), label: {
                         ZStack {
                             Rectangle()
                                 .fill(.white)

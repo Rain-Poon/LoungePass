@@ -11,6 +11,8 @@
 		ED86CFB42AF0D8440057B0F9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED86CFB32AF0D8440057B0F9 /* ContentView.swift */; };
 		ED86CFB62AF0D8490057B0F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED86CFB52AF0D8490057B0F9 /* Assets.xcassets */; };
 		ED86CFB92AF0D8490057B0F9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED86CFB82AF0D8490057B0F9 /* Preview Assets.xcassets */; };
+		ED86CFC52AF0E0FA0057B0F9 /* ItinerarySearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED86CFC42AF0E0FA0057B0F9 /* ItinerarySearch.swift */; };
+		ED86CFC62AF0E0FA0057B0F9 /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED86CFC32AF0E0FA0057B0F9 /* SearchResultView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		ED86CFB32AF0D8440057B0F9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		ED86CFB52AF0D8490057B0F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED86CFB82AF0D8490057B0F9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		ED86CFC32AF0E0FA0057B0F9 /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
+		ED86CFC42AF0E0FA0057B0F9 /* ItinerarySearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItinerarySearch.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +55,8 @@
 		ED86CFB02AF0D8440057B0F9 /* LoungePass */ = {
 			isa = PBXGroup;
 			children = (
+				ED86CFC42AF0E0FA0057B0F9 /* ItinerarySearch.swift */,
+				ED86CFC32AF0E0FA0057B0F9 /* SearchResultView.swift */,
 				ED86CFB12AF0D8440057B0F9 /* LoungePassApp.swift */,
 				ED86CFB32AF0D8440057B0F9 /* ContentView.swift */,
 				ED86CFB52AF0D8490057B0F9 /* Assets.xcassets */,
@@ -138,6 +144,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED86CFB42AF0D8440057B0F9 /* ContentView.swift in Sources */,
+				ED86CFC62AF0E0FA0057B0F9 /* SearchResultView.swift in Sources */,
+				ED86CFC52AF0E0FA0057B0F9 /* ItinerarySearch.swift in Sources */,
 				ED86CFB22AF0D8440057B0F9 /* LoungePassApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -70,6 +70,7 @@ struct LoungeDetailView: View {
                     .padding(.vertical, 1)
                 HStack {
                     Image(systemName: "checkmark.circle")
+                        .foregroundColor(Color.green)
                     Text("Free Access for Business Class Tickets")
                         .fontWeight(.medium)
                         .padding(.vertical, 8)

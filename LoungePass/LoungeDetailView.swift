@@ -30,6 +30,7 @@ struct LoungeDetailView: View {
         ("powerplug.fill", "10 Charging Ports"),
         ("table.furniture.fill", "40 Dining Tables")
     ]
+    let featuredPhotos = ["cathay_lounge_1", "cathay_lounge_2", "cathay_lounge_3"]
     var body: some View {
         ScrollView {
             ZStack {
@@ -38,8 +39,11 @@ struct LoungeDetailView: View {
                     .frame(height:250)
                     .edgesIgnoringSafeArea(.top)
                     .overlay(
-                        Color(.white)
-                            .opacity(0.7)
+                        LinearGradient(
+                            gradient: Gradient(colors: [.clear, .white]),
+                            startPoint: .top,
+                            endPoint: .bottom
+                        )
                     )
                 VStack {
                     Spacer()
@@ -76,7 +80,7 @@ struct LoungeDetailView: View {
                         .bold()
                         .foregroundColor(.white)
                         .fontWeight(.medium)
-                        .padding(5)
+                        .padding(10)
                         .background(
                             RoundedRectangle(cornerRadius: 20)
                                 .fill(Color.green)
@@ -97,7 +101,7 @@ struct LoungeDetailView: View {
                 }
                 Divider()
                 
-                Text("Luxury Swedian Chair is a contemporary chair based on the virtues of modern craft. it carries on the simplicity and honestly of the archetypical chair.")
+                Text("A home away from home. Sink into our designer chairs, relax, and enjoy views of the runway and terminal interior. Stay connected.")
                     .lineSpacing(8.0)
                     .opacity(0.6)
             }
@@ -122,12 +126,30 @@ struct LoungeDetailView: View {
             }
             .padding(.horizontal)
             Text("Facilities (Booking Required")
-                .padding(.horizontal)
+                .padding([.top, .leading, .trailing])
                 .frame(maxWidth: .infinity, alignment: .leading)
             Divider()
                 .padding(.horizontal)
-            
-            
+            Text("Featured Photos")
+                .padding([.top, .leading, .trailing])
+                .frame(maxWidth: .infinity, alignment: .leading)
+            Divider()
+                .padding(.horizontal)
+            ScrollView(.horizontal) {
+                HStack(spacing: 10) {
+                    ForEach(0..<featuredPhotos.count) {
+                        item in
+                        Image(featuredPhotos[item])
+                            .resizable(resizingMode: .stretch)
+                            .aspectRatio(4/3, contentMode: .fit)
+                        
+                            .cornerRadius(20)
+                            .frame(height:200)
+                    }
+                }
+                .padding()
+                
+            }
             
         }
         .edgesIgnoringSafeArea(.top)

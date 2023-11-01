@@ -18,8 +18,20 @@ import SwiftUI
 
 struct LoungeDetailView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    let columns = [
+        GridItem(.flexible(), alignment: .leading),
+        GridItem(.flexible(), alignment: .leading)
+    ]
+    let grids = [
+        ("person.fill", "250 Seats"),
+        ("chair.lounge.fill", "20 Sleeping Chairs"),
+        ("studentdesk", "20 Working Desks"),
+        ("shower.fill", "5 Showers"),
+        ("powerplug.fill", "10 Charging Ports"),
+        ("table.furniture.fill", "40 Dining Tables")
+    ]
     var body: some View {
-        VStack {
+        ScrollView {
             ZStack {
                 Image("cathay_lounge")
                     .resizable(resizingMode: .stretch)
@@ -27,15 +39,23 @@ struct LoungeDetailView: View {
                     .edgesIgnoringSafeArea(.top)
                     .overlay(
                         Color(.white)
-                            .opacity(0.5)
+                            .opacity(0.7)
                     )
                 VStack {
                     Spacer()
-                    Text("CATHAY LOUNGE")
+                    Text("Cathay Lounge")
                         .font(.title)
                         .fontWeight(.bold)
                         .padding(.horizontal)
                         .frame(maxWidth: .infinity, alignment: .leading)
+                    Text("By The Cathay Group")
+                        .font(.caption)
+                        .fontWeight(.medium)
+                        .padding(.horizontal)
+                        .frame(
+                            maxWidth: .infinity,
+                            alignment: .leading)
+                        .padding(.bottom)
                 }
                 .frame(height:250)
             }
@@ -62,7 +82,7 @@ struct LoungeDetailView: View {
                                 .fill(Color.green)
                         )
                     
-                        
+                    
                 }
                 .padding(.vertical, 1)
                 Text("Address: \nGate W65, Hong Kong International Airport, Terminal 1, 6 Sky Plaza Rd, Lantau Island")
@@ -84,7 +104,30 @@ struct LoungeDetailView: View {
             .padding()
             .frame(width: UIScreen.main.bounds.size.width)
             .background(Color.white)
-            Spacer()
+            
+            Text("Facilities")
+                .padding(.horizontal)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            Divider()
+                .padding(.horizontal)
+            LazyVGrid(columns: columns, spacing: 10) {
+                ForEach(0..<grids.count, id: \.self) { item in
+                    HStack {
+                        Image(systemName: grids[item].0)
+                            .frame(width: 20)
+                        Text(grids[item].1)
+                            .opacity(0.7)
+                    }
+                }
+            }
+            .padding(.horizontal)
+            Text("Facilities (Booking Required")
+                .padding(.horizontal)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            Divider()
+                .padding(.horizontal)
+            
+            
             
         }
         .edgesIgnoringSafeArea(.top)

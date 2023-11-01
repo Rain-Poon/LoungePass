@@ -10,7 +10,7 @@ import SwiftUI
 struct HomePageView: View {
     var body: some View {
         NavigationView {
-            ZStack {
+            ZStack() {
                 VStack {
                     ZStack {
                         Rectangle()
@@ -28,7 +28,7 @@ struct HomePageView: View {
                     }
                     Spacer()
                 }
-                VStack {
+                VStack() {
                     Text("Your Upcoming Flights")
                         .font(.title3)
                         .underline()
@@ -42,19 +42,36 @@ struct HomePageView: View {
                                 )
                                 .cornerRadius(10)
                                 .blur(radius: 2)
+                                .overlay(Color(.white)
+                                    .opacity(0.6))
                                 .opacity(0.5)
                             HStack {
                                 Text("03\nJan")
                                     .foregroundColor(.black)
                                     .multilineTextAlignment(.center)
+                                    .bold()
                                 Spacer()
                                 HStack {
-                                    Text("HKG")
+                                    VStack{
+                                        Text("HKG")
+                                            .font(.title2)
+                                            .foregroundColor(.black)
+                                            .bold()
+                                        Text("Terminal 2")
+                                            .foregroundColor(.black)
+                                            .fontWeight(.medium)
+                                    }
+                                    Image(systemName: "airplane.departure")
                                         .foregroundColor(.black)
-                                    Image(systemName: "arrow.right")
-                                        .foregroundColor(.black)
-                                    Text("LHR")
-                                        .foregroundColor(.black)
+                                    VStack{
+                                        Text("LHR")
+                                            .font(.title2)
+                                            .foregroundColor(.black)
+                                            .bold()
+                                        Text("Terminal 5")
+                                            .foregroundColor(.black)
+                                            .fontWeight(.medium)
+                                    }
                                 }
                                 Spacer()
                             }

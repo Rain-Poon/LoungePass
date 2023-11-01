@@ -125,16 +125,24 @@ struct LoungeDetailView: View {
                 }
             }
             .padding(.horizontal)
-            Text("Facilities (Booking Required")
+            Text("Facilities (Booking Required)")
                 .padding([.top, .leading, .trailing])
                 .frame(maxWidth: .infinity, alignment: .leading)
             Divider()
                 .padding(.horizontal)
+            VStack(){
+                HStack(){
+                    Image(systemName:"person.fill")
+                    Text("Massage")
+                    Text("Book")
+                }
+            }
             Text("Featured Photos")
                 .padding([.top, .leading, .trailing])
                 .frame(maxWidth: .infinity, alignment: .leading)
             Divider()
                 .padding(.horizontal)
+            
             ScrollView(.horizontal) {
                 HStack(spacing: 10) {
                     ForEach(0..<featuredPhotos.count) {

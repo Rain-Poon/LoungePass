@@ -18,7 +18,10 @@ struct SelectBookingView: View {
     
     var body: some View {
         VStack {
-            Text("HKG")
+            Text("Hong Kong International Airport")
+                .bold()
+            Text("Terminal 2 (Departure)")
+                .fontWeight(.thin)
             Picker("AccessType", selection: $selectedAccessType) {
                 ForEach(AccessType.allCases) { accessType in
                     Text(accessType.rawValue)
@@ -26,8 +29,7 @@ struct SelectBookingView: View {
             }
             .pickerStyle(.segmented)
             .padding()
-            
-            destinationView(accessType: selectedAccessType)
+            destinationView(accessType: selectedAccessType)   
         }
         .navigationBarTitle("LoungePass", displayMode: .inline)
     }

@@ -25,6 +25,10 @@ struct LoungeDetailView: View {
                     .resizable(resizingMode: .stretch)
                     .frame(height:250)
                     .edgesIgnoringSafeArea(.top)
+                    .overlay(
+                        Color(.white)
+                            .opacity(0.5)
+                    )
                 VStack {
                     Spacer()
                     Text("CATHAY LOUNGE")
@@ -48,10 +52,19 @@ struct LoungeDetailView: View {
                         .opacity(0.5)
                         .padding(.leading, 8)
                     Spacer()
+                    Text("Capacity: 83/250")
+                        .bold()
+                        .foregroundColor(.white)
+                        .fontWeight(.medium)
+                        .padding(5)
+                        .background(
+                            RoundedRectangle(cornerRadius: 20)
+                                .fill(Color.green)
+                        )
+                    
+                        
                 }
                 .padding(.vertical, 1)
-                Text("Real-time Occupancy: 83/250")
-                    .padding(.vertical, 1)
                 Text("Address: \nGate W65, Hong Kong International Airport, Terminal 1, 6 Sky Plaza Rd, Lantau Island")
                 Text("Eligible Credit Cards:")
                     .padding(.vertical, 1)

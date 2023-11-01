@@ -9,24 +9,20 @@ import SwiftUI
 
 struct SearchView: View {
     @State private var input = ""
+    @State private var searchactive = false
+    let airports = ["LHR", "HKG", "NRT", "ICN", "LAX"]
+    
     var body: some View {
-            NavigationView(content: {
-                VStack {
-                    Spacer().frame(height:20)
-                    Text("Lounge search")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                        .padding(.bottom, 10.0)
-                        .frame(maxWidth: UIScreen.main.bounds.size.width*0.85, alignment: .leading)
+        NavigationView(content: {
+            NavigationStack {
+                HStack{
+                    Image(systemName: "mappin.and.ellipse")
+                    Text("Nearby")
+                        .foregroundColor(Color.black)
+                }.padding(.top, 20.0).frame(maxWidth: UIScreen.main.bounds.size.width*0.85, alignment: .leading)
                 ScrollView{
                     NavigationLink(destination:SelectBookingView()){
                         VStack{
-                            HStack{
-                                Image(systemName: "mappin.and.ellipse")
-                                Text("Nearby")
-                                    .foregroundColor(Color.black)
-                            }.padding(.top, 20.0).frame(maxWidth: UIScreen.main.bounds.size.width*0.85, alignment: .leading)
-                            
                             Spacer().frame(height:20)
                             //first direction
                             ZStack{
@@ -52,19 +48,17 @@ struct SearchView: View {
                                         .foregroundColor(Color.black).frame(maxWidth: UIScreen.main.bounds.size.width*0.8
                                                                             , alignment: .leading)
                                 }
-                                
-                                
                             }
-                            
                         }
-                        
                     }
                 }
-            }
-            }).padding(.top, -20.0).searchable(text: $input, prompt: "Search by airport")
-            
-
+            }.navigationTitle("Lounge Search").searchable(text: $input, prompt: "Search by airport")
+        })
+        
+        
     }
+    
+    
 }
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {

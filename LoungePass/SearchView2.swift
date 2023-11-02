@@ -57,19 +57,19 @@ struct SearchView2: View {
             }
             
             VStack {
-
+                
                 if isShowNearby {
-                  nearbyView
-                    .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
+                    nearbyView
+                        .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
                 } else {
-                  List(filteredAirports) { airport in
-                    Text(airport.name)
-                  }
-                  .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
+                    List(filteredAirports) { airport in
+                        NavigationLink(destination: SelectBookingView()){ Text(airport.name)}
+                    }
+                    .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
                 }
-
-              }
-              .animation(.easeInOut, value: isShowNearby)
+                
+            }
+            .animation(.easeInOut, value: isShowNearby)
         }
     }
 }

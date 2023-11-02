@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9804F7012AF1607500442DCC /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9804F7002AF1607500442DCC /* SearchView.swift */; };
+		ED03208D2AF3485400ECC80A /* SearchView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED03208C2AF3485400ECC80A /* SearchView2.swift */; };
 		ED86CFB22AF0D8440057B0F9 /* LoungePassApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED86CFB12AF0D8440057B0F9 /* LoungePassApp.swift */; };
 		ED86CFB42AF0D8440057B0F9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED86CFB32AF0D8440057B0F9 /* ContentView.swift */; };
 		ED86CFB62AF0D8490057B0F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED86CFB52AF0D8490057B0F9 /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		9804F7002AF1607500442DCC /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		ED03208C2AF3485400ECC80A /* SearchView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView2.swift; sourceTree = "<group>"; };
 		ED86CFAE2AF0D8440057B0F9 /* LoungePass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoungePass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED86CFB12AF0D8440057B0F9 /* LoungePassApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoungePassApp.swift; sourceTree = "<group>"; };
 		ED86CFB32AF0D8440057B0F9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 				ED86CFB12AF0D8440057B0F9 /* LoungePassApp.swift */,
 				ED86CFB32AF0D8440057B0F9 /* ContentView.swift */,
 				9804F7002AF1607500442DCC /* SearchView.swift */,
+				ED03208C2AF3485400ECC80A /* SearchView2.swift */,
 				ED86CFB52AF0D8490057B0F9 /* Assets.xcassets */,
 				ED86CFB72AF0D8490057B0F9 /* Preview Content */,
 			);
@@ -163,6 +166,7 @@
 				EDF3D5A62AF1593A0039F034 /* LoungeDetailView.swift in Sources */,
 				ED86CFC62AF0E0FA0057B0F9 /* SearchResultView.swift in Sources */,
 				ED86CFCE2AF145260057B0F9 /* SelectBookingView.swift in Sources */,
+				ED03208D2AF3485400ECC80A /* SearchView2.swift in Sources */,
 				ED86CFC52AF0E0FA0057B0F9 /* ItinerarySearch.swift in Sources */,
 				ED86CFB22AF0D8440057B0F9 /* LoungePassApp.swift in Sources */,
 				ED86CFD22AF14A370057B0F9 /* FreeAccessView.swift in Sources */,

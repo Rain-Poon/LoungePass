@@ -106,7 +106,7 @@ struct HomePageView: View {
                     Text("Or")
                         .font(.title3)
                     
-                    NavigationLink(destination: SelectBookingView(), label: {
+                    NavigationLink(destination: SearchView2(), label: {
                         ZStack {
                             Rectangle()
                                 .fill(.white)

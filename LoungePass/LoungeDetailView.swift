@@ -91,12 +91,16 @@ struct LoungeDetailView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                 Divider()
                     .padding(.horizontal)
-                VStack(){
+                VStack(spacing: 10){
                     HStack(){
-                        Image(systemName:"person.fill")
-                        Text("Massage")
-                        Text("Book")
-                    }
+                        HStack(){
+                            Image(systemName:"person.fill")
+                            Text("Focus Rooms")
+                        }.frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment:.leading)
+                        Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                            Text("Book")
+                        })
+                    }.padding([.leading, .trailing])
                 }
                 Text("Featured Photos")
                     .padding([.top, .leading, .trailing])

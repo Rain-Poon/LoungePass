@@ -32,9 +32,10 @@ struct HomePageView: View {
                     Text("Your Upcoming Flights")
                         .font(.title3)
                         .underline()
-                    NavigationLink(destination:
-                                    SelectBookingView()
-                                   , label: {
+                    itineraryViewBlock(
+                        destination: AnyView(SelectBookingView()), imageName: "hkg_airport", itineraryDate: "03\nJan", fromAirport: "HKG", fromAirportTerminal: "Terminal 2", toAirport: "LHR", toAirportTerminal: "Terminal 5"
+                    )
+                    NavigationLink(destination: SelectBookingView(), label: {
                         ZStack {
                             Image("hkg_airport")
                                 .resizable(resizingMode: .stretch)
@@ -79,7 +80,6 @@ struct HomePageView: View {
                             
                         }
                     })
-                    
                     .padding(.vertical)
                     ZStack {
                         Image("lhr_airport")
@@ -122,6 +122,65 @@ struct HomePageView: View {
             }
         }
         
+    }
+}
+
+struct itineraryViewBlock: View {
+    @State var destination: AnyView
+    @State var imageName: String
+    @State var itineraryDate: String
+    @State var fromAirport: String
+    @State var fromAirportTerminal: String
+    @State var toAirport: String
+    @State var toAirportTerminal: String
+    
+    var body: some View {
+        NavigationLink(destination: destination, label: {
+            ZStack {
+                Image(imageName)
+                    .resizable(resizingMode: .stretch)
+                    .frame(width: UIScreen.main.bounds.size.width-50, height: 100
+                    )
+                    .cornerRadius(10)
+                    .blur(radius: 2)
+                    .overlay(Color(.white)
+                        .opacity(0.6))
+                    .opacity(0.5)
+                HStack {
+                    Text(itineraryDate)
+                        .foregroundColor(.black)
+                        .multilineTextAlignment(.center)
+                        .bold()
+                    Spacer()
+                    HStack {
+                        VStack{
+                            Text(fromAirport)
+                                .font(.title2)
+                                .foregroundColor(.black)
+                                .bold()
+                            Text(fromAirportTerminal)
+                                .foregroundColor(.black)
+                                .fontWeight(.medium)
+                        }
+                        Image(systemName: "airplane.departure")
+                            .foregroundColor(.black)
+                        VStack{
+                            Text(toAirport)
+                                .font(.title2)
+                                .foregroundColor(.black)
+                                .bold()
+                            Text(toAirportTerminal)
+                                .foregroundColor(.black)
+                                .fontWeight(.medium)
+                        }
+                    }
+                    Spacer()
+                }
+                .frame(width: UIScreen.main.bounds.width-100)
+                
+            }
+        })
+        .padding(.vertical)
     }
 }
 

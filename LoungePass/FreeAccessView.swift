@@ -12,94 +12,98 @@ struct FreeAccessView: View {
         // Navigation View is not defined here. Go to the main app to access the sub pages
 //        NavigationView {
             ScrollView {
-                // firt lounge
-                NavigationLink(destination: LoungeDetailView()) {
-                    ZStack {
-                        Image("cathay_lounge")
-                            .resizable(resizingMode: .stretch)
-                            .frame(width: UIScreen.main.bounds.size.width-50, height: 170
-                            )
-                            .cornerRadius(10)
-                            .blur(radius: 2)
-                            .opacity(0.7)
-                            .overlay(Color(.black).opacity(0.3))
-                        VStack(alignment: .trailing) {
-                            HStack(content: {
-                                    Image(systemName: "person.fill")
-                                        .foregroundColor(.white)
-                                    Text("83/250")
-                                        .bold()
-                                        .foregroundColor(.white)
-                                        .fontWeight(.medium)
-                            })
-                            .frame(alignment: .trailing)
-                                .padding(10)
-                                .background(
-                                    RoundedRectangle(cornerRadius: 20)
-                                        .fill(Color.green)
-                                )
-                            
-                            Spacer()
-                            Text("Cathay Lounge")
-                                .foregroundColor(.white)
-                                .font(.title2)
-                                .fontWeight(.bold)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                            HStack(alignment: .top, content: {
-                                Text("0.5 km away")
-                                    .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/,
-                                           alignment: .leading
-                                    )
-                                    .foregroundColor(.white)
-                                    .bold()
-                            })
-                            
-                        }
-                        .frame(width: UIScreen.main.bounds.width-100, height: 130)
-                        
-                    }
-                    .padding(.vertical)
-                }
-                
-                
-                // second lounge
-                ZStack {
-                    Image("plaza_premium_lounge")
-                        .resizable(resizingMode: .stretch)
-                        .frame(width: UIScreen.main.bounds.size.width-50, height: 170
-                        )
-                        .cornerRadius(10)
-                        .blur(radius: 2)
-                        .opacity(0.7)
-                    VStack() {
-                        
-                        HStack {
+                FreeAccessViewBlock(destination: AnyView(LoungeDetailView()), imageName: "cathay_lounge", maxCapcity: 250, currentOccupation: 82, displayName: "Cathay Lounge", distance: "0.5 km away");
+                FreeAccessViewBlock(destination: AnyView(LoungeDetailView()), imageName: "plaza_premium_lounge",maxCapcity: 250,currentOccupation: 163, displayName: "Plaza Premium Lounge", distance: "0.8 km away");
+        }
+        
+    }
+}
+
+struct FreeAccessViewBlock: View {
+    var destination: AnyView
+    var imageName: String
+    var maxCapcity: Double
+    var currentOccupation: Double
+    var displayName: String
+    var distance: String
+    
+    
+    @State private var occupationDisplayColor: Color
+
+        
+    init(
+        destination: AnyView,
+        imageName: String,
+        maxCapcity: Double,
+        currentOccupation: Double,
+        displayName: String,
+        distance: String
+    ){
+        if (currentOccupation / maxCapcity < 0.5){
+            occupationDisplayColor = Color.white
+        } else if (currentOccupation / maxCapcity < 0.8){
+            occupationDisplayColor = Color.yellow
+        } else {
+            occupationDisplayColor = Color.red
+        }
+        self.destination = destination
+        self.imageName = imageName
+        self.maxCapcity = maxCapcity
+        self.currentOccupation = currentOccupation
+        self.displayName = displayName
+        self.distance = distance
+    }
+    
+    var body: some View {
+        NavigationLink(destination: destination) {
+            ZStack {
+                Image(imageName)
+                    .resizable(resizingMode: .stretch)
+                    .frame(width: UIScreen.main.bounds.size.width-50, height: 170)
+                    .cornerRadius(10)
+                    .blur(radius: 2)
+                    .opacity(0.7)
+                    .overlay(
+                        Gradient(colors: [.clear, .white])
+                            .opacity(0.5)
+                    )
+                VStack(alignment: .trailing) {
+                    HStack(content: {
                             Image(systemName: "person.fill")
-                            Text("163")
-                                .fontWeight(.bold)
-                                .foregroundColor(Color.orange)
-                            Text("/250")
-                        }
-                        .padding(5)
-                        .overlay(
+                                .foregroundColor(.black)
+                            Text("\(currentOccupation, specifier: "%.0f")/\(maxCapcity, specifier: "%.0f")")
+                                .bold()
+                                .foregroundColor(.black)
+                                .fontWeight(.medium)
+                    })
+                    .frame(alignment: .trailing)
+                        .padding(10)
+                        .background(
                             RoundedRectangle(cornerRadius: 20)
-                                .stroke(Color.blue, lineWidth: 2)
+                                .fill(occupationDisplayColor)
                         )
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                        
-                        Spacer()
-                        Text("PLAZA PREMIUM LOUNGE")
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                    }
-                    .frame(width: UIScreen.main.bounds.width-100, height: 130)
+                    
+                    Spacer()
+                    Text(displayName)
+                        .foregroundColor(.black)
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    HStack(alignment: .top, content: {
+                        Text(distance)
+                            .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/,
+                                   alignment: .leading
+                            )
+                            .foregroundColor(.black)
+                            .bold()
+                    })
                     
                 }
-                .padding(.vertical)
+                .frame(width: UIScreen.main.bounds.width-100, height: 130)
+                
             }
-//        }
-        
+            .padding(.vertical)
+        }
     }
 }
 

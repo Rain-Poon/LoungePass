@@ -10,7 +10,7 @@ import SwiftUI
 struct HomePageView: View {
     var body: some View {
         NavigationView {
-            ZStack() {
+            ZStack(alignment: .center) {
                 VStack {
                     ZStack {
                         Rectangle()
@@ -28,92 +28,29 @@ struct HomePageView: View {
                     }
                     Spacer()
                 }
-                VStack() {
+                VStack {
                     Text("Your Upcoming Flights")
                         .font(.title3)
                         .underline()
                     itineraryViewBlock(
-                        destination: AnyView(SelectBookingView()), imageName: "hkg_airport", itineraryDate: "03\nJan", fromAirport: "HKG", fromAirportTerminal: "Terminal 2", toAirport: "LHR", toAirportTerminal: "Terminal 5"
+                        destination: AnyView(SelectBookingView()), imageName: "hkg_airport", itineraryDate: "03\nJan", fromAirport: "HKG", fromAirportTerminal: "Terminal 1", toAirport: "LHR", toAirportTerminal: "Terminal 5"
                     )
-                    NavigationLink(destination: SelectBookingView(), label: {
-                        ZStack {
-                            Image("hkg_airport")
-                                .resizable(resizingMode: .stretch)
-                                .frame(width: UIScreen.main.bounds.size.width-50, height: 100
-                                )
-                                .cornerRadius(10)
-                                .blur(radius: 2)
-                                .overlay(Color(.white)
-                                    .opacity(0.6))
-                                .opacity(0.5)
-                            HStack {
-                                Text("03\nJan")
-                                    .foregroundColor(.black)
-                                    .multilineTextAlignment(.center)
-                                    .bold()
-                                Spacer()
-                                HStack {
-                                    VStack{
-                                        Text("HKG")
-                                            .font(.title2)
-                                            .foregroundColor(.black)
-                                            .bold()
-                                        Text("Terminal 2")
-                                            .foregroundColor(.black)
-                                            .fontWeight(.medium)
-                                    }
-                                    Image(systemName: "airplane.departure")
-                                        .foregroundColor(.black)
-                                    VStack{
-                                        Text("LHR")
-                                            .font(.title2)
-                                            .foregroundColor(.black)
-                                            .bold()
-                                        Text("Terminal 5")
-                                            .foregroundColor(.black)
-                                            .fontWeight(.medium)
-                                    }
-                                }
-                                Spacer()
-                            }
-                            .frame(width: UIScreen.main.bounds.width-100)
-                            
-                        }
-                    })
-                    .padding(.vertical)
-                    ZStack {
-                        Image("lhr_airport")
-                            .resizable(resizingMode: .stretch)
-                            .frame(width: UIScreen.main.bounds.size.width-50, height: 100
-                            )
-                            .cornerRadius(10)
-                            .blur(radius: 2)
-                            .opacity(0.5)
-                        HStack {
-                            Text("14\nJan")
-                                .multilineTextAlignment(.center)
-                            Spacer()
-                            HStack {
-                                Text("LHR")
-                                Image(systemName: "arrow.right")
-                                Text("HKG")
-                            }
-                            Spacer()
-                        }
-                        .frame(width: UIScreen.main.bounds.width-100)
-                    }
-                    .padding(.vertical)
+                    itineraryViewBlock(
+                        destination: AnyView(SelectBookingView()), imageName: "lhr_airport", itineraryDate: "14\nJan", fromAirport: "LHR", fromAirportTerminal: "Terminal 5", toAirport: "HKG", toAirportTerminal: "Terminal 1"
+                    )
                     Text("Or")
                         .font(.title3)
                     
                     NavigationLink(destination: SearchView2(), label: {
                         ZStack {
-                            Rectangle()
-                                .fill(.white)
-                                .frame(width: UIScreen.main.bounds.size.width*0.8, height: 50)
-                                .cornerRadius(20)
-                                .shadow(radius: 2)
                             Text("Search by Airport")
+                                .foregroundColor(.black)
+                                .bold()
+                                .overlay(
+                                    RoundedRectangle(cornerRadius:10)
+                                        .stroke(Color.black, lineWidth: 1)
+                                        .frame(width: UIScreen.main.bounds.size.width*0.8, height: 50)
+                                )
                         }
                         
                     })

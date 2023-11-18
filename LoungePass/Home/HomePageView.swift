@@ -37,10 +37,10 @@ struct HomePageView: View {
                         .fontWeight(.bold)
                         .underline()
                     itineraryViewBlock(
-                        destination: AnyView(SelectLoungeView()), imageName: "hkg_airport", itineraryDate: "03\nJan", fromAirport: "HKG", fromAirportTerminal: "Terminal 1", toAirport: "LHR", toAirportTerminal: "Terminal 5"
+                        destination: AnyView(SelectLoungeView(airport: SampleData().getData[0])), imageName: "hkg_airport", itineraryDate: "03\nJan", fromAirport: "HKG", fromAirportTerminal: "Terminal 1", toAirport: "LHR", toAirportTerminal: "Terminal 5"
                     )
                     itineraryViewBlock(
-                        destination: AnyView(SelectLoungeView()), imageName: "lhr_airport", itineraryDate: "14\nJan", fromAirport: "LHR", fromAirportTerminal: "Terminal 5", toAirport: "HKG", toAirportTerminal: "Terminal 1"
+                        destination: AnyView(SelectLoungeView(airport: SampleData().getData[0])), imageName: "lhr_airport", itineraryDate: "14\nJan", fromAirport: "LHR", fromAirportTerminal: "Terminal 5", toAirport: "HKG", toAirportTerminal: "Terminal 1"
                     )
                     Text("Or")
                         .font(.title3)

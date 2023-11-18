@@ -17,20 +17,21 @@ struct SearchView2: View {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
     
-    let airports = [
-        Airport(name: "John F. Kennedy International Airport", Location: CLLocationCoordinate2D(latitude: 0, longitude: 0), loungeList: []),
-        Airport(name: "Los Angeles International Airport", Location: CLLocationCoordinate2D(latitude: 0, longitude: 0), loungeList: []),
-        Airport(name: "Heathrow Airport", Location: CLLocationCoordinate2D(latitude: 0, longitude: 0), loungeList: []),
-        Airport(name: "Tokyo Haneda Airport", Location: CLLocationCoordinate2D(latitude: 0, longitude: 0), loungeList: []),
-        Airport(name: "Hong Kong International Airport", Location: CLLocationCoordinate2D(latitude: 0, longitude: 0), loungeList: [])
+    let _airports = [
+        Airport(airportName: "John F. Kennedy International Airport", airportLocation: CLLocationCoordinate2D(latitude: 0, longitude: 0), loungeList: []),
+        Airport(airportName: "Los Angeles International Airport", airportLocation: CLLocationCoordinate2D(latitude: 0, longitude: 0), loungeList: []),
+        Airport(airportName: "Heathrow Airport", airportLocation: CLLocationCoordinate2D(latitude: 0, longitude: 0), loungeList: []),
+        Airport(airportName: "Tokyo Haneda Airport", airportLocation: CLLocationCoordinate2D(latitude: 0, longitude: 0), loungeList: []),
+        Airport(airportName: "Hong Kong International Airport", airportLocation: CLLocationCoordinate2D(latitude: 0, longitude: 0), loungeList: [])
     ]
+    let airports = SampleData().getData;
     
     var filteredAirports: [Airport] {
         if searchText.isEmpty {
             return airports
         } else {
             return airports.filter { airport in
-                airport.name.localizedCaseInsensitiveContains(searchText)
+                airport.airportName.localizedCaseInsensitiveContains(searchText)
             }
         }
     }
@@ -59,7 +60,7 @@ struct SearchView2: View {
                         .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
                 } else {
                     List(filteredAirports) { airport in
-                        NavigationLink(destination: SelectLoungeView()){ Text(airport.name)}
+                        NavigationLink(destination: SelectLoungeView(airport: airport)){ Text(airport.airportName)}
                     }
                     .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
                 }
@@ -71,39 +72,44 @@ struct SearchView2: View {
 }
 
 var nearbyView: some View {
-    VStack {
+    let airports = SampleData().getData;
+    
+    let selectedAirport: Airport = airports[0]
+    return VStack {
         HStack{
             Image(systemName: "mappin.and.ellipse")
             Text("Nearby")
                 .foregroundColor(Color.black)
         }.padding(.top, 20.0).frame(maxWidth: UIScreen.main.bounds.size.width*0.85, alignment: .leading)
         ScrollView{
-            NavigationLink(destination:SelectLoungeView()){
+            NavigationLink(destination:SelectLoungeView(airport: selectedAirport)){
                 VStack{
                     Spacer().frame(height:20)
                     //first direction
                     ZStack{
-                        Image("hkg_airport")
-                            .resizable(resizingMode: .stretch)
-                            .frame(width: UIScreen.main.bounds.size.width-50, height: 100
-                            )
-                            .cornerRadius(10)
-                            .blur(radius: 2)
-                            .opacity(0.7)
-                        VStack{
-                            HStack{
-                                Image(systemName: "location")
-                                    .foregroundColor(Color.black)
-                                Text("31.8m")
-                                    .font(.body)
-                                    .foregroundColor(Color.black)
-                            }.frame(maxWidth: UIScreen.main.bounds.size.width*0.8, alignment:.topTrailing)
-                            Spacer().frame(height:30)
-                            Text("Hong Kong International Airport")
-                                .font(.title3)
-                                .fontWeight(.heavy)
-                                .foregroundColor(Color.black).frame(maxWidth: UIScreen.main.bounds.size.width*0.8
-                                                                    , alignment: .leading)
+                        ForEach(airports){airport in
+                            Image("hkg_airport")
+                                .resizable(resizingMode: .stretch)
+                                .frame(width: UIScreen.main.bounds.size.width-50, height: 100
+                                )
+                                .cornerRadius(10)
+                                .blur(radius: 2)
+                                .opacity(0.7)
+                            VStack{
+                                HStack{
+                                    Image(systemName: "location")
+                                        .foregroundColor(Color.black)
+                                    Text("31.8m")
+                                        .font(.body)
+                                        .foregroundColor(Color.black)
+                                }.frame(maxWidth: UIScreen.main.bounds.size.width*0.8, alignment:.topTrailing)
+                                Spacer().frame(height:30)
+                                Text(airport.airportName)
+                                    .font(.title3)
+                                    .fontWeight(.heavy)
+                                    .foregroundColor(Color.black).frame(maxWidth: UIScreen.main.bounds.size.width*0.8
+                                                                        , alignment: .leading)
+                            }
                         }
                     }
                 }

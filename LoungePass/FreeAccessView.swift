@@ -12,8 +12,8 @@ struct FreeAccessView: View {
         // Navigation View is not defined here. Go to the main app to access the sub pages
 //        NavigationView {
             ScrollView {
-                FreeAccessViewBlock(destination: AnyView(LoungeDetailView()), imageName: "cathay_lounge", maxCapcity: 250, currentOccupation: 82, displayName: "Cathay Lounge", distance: "0.5 km away");
-                FreeAccessViewBlock(destination: AnyView(LoungeDetailView()), imageName: "plaza_premium_lounge",maxCapcity: 250,currentOccupation: 163, displayName: "Plaza Premium Lounge", distance: "0.8 km away");
+                FreeAccessViewBlock(destination: AnyView(LoungeDetailView(address: "Gate W65, Hong Kong International Airport, Terminal 1, 6 Sky Plaza Rd, Lantau Island")), imageName: "cathay_lounge", maxCapcity: 250, currentOccupation: 82, displayName: "Cathay Lounge", distance: "0.5 km away");
+                FreeAccessViewBlock(destination: AnyView(LoungeDetailView(address: "Gate W65, Hong Kong International Airport, Terminal 1, 6 Sky Plaza Rd, Lantau Island")), imageName: "plaza_premium_lounge",maxCapcity: 250,currentOccupation: 163, displayName: "Plaza Premium Lounge", distance: "0.8 km away");
         }
         
     }
@@ -61,7 +61,7 @@ struct FreeAccessViewBlock: View {
                     .resizable(resizingMode: .stretch)
                     .frame(width: UIScreen.main.bounds.size.width-50, height: 170)
                     .cornerRadius(10)
-                    .blur(radius: 2)
+                    .blur(radius: 1.2)
                     .opacity(0.7)
                     .overlay(
                         Gradient(colors: [.clear, .white])

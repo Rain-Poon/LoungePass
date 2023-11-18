@@ -6,15 +6,8 @@
 //
 
 import SwiftUI
-
-//
-//  DetailedView.swift
-//  Revolatus
-//
-//  Created by Rain Poon on 12/9/2023.
-//
-
-import SwiftUI
+import UIKit
+import MapKit
 
 let featuredPhotos = ["cathay_lounge_1", "cathay_lounge_2", "cathay_lounge_3"]
 
@@ -34,7 +27,19 @@ let grids = [
 
 struct LoungeDetailView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-
+    let address: String
+    
+        func openAppleMaps() {
+            let addressEncoded = address.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+            if let url = URL(string: "http://maps.apple.com/?address=" + addressEncoded) {
+                if UIApplication.shared.canOpenURL(url) {
+                    UIApplication.shared.open(url)
+                } else {
+                    // Handle the case where Apple Maps can't be opened (e.g., on a simulator)
+                    print("Apple Maps cannot be opened.")
+                }
+            }
+        }
     
     var body: some View {
         ScrollView {
@@ -64,7 +69,13 @@ struct LoungeDetailView: View {
                         
                     }
                     .padding(.vertical, 1)
-                    Text("Address: \nGate W65, Hong Kong International Airport, Terminal 1, 6 Sky Plaza Rd, Lantau Island")
+                    Button(action: {
+                        openAppleMaps()
+                    }) {
+                        Text("Address: \n\(address)")
+                            .multilineTextAlignment(.leading)
+                    }
+                    
                     Text("Eligible Credit Cards:")
                         .padding(.vertical, 1)
                     HStack {
@@ -81,7 +92,8 @@ struct LoungeDetailView: View {
                         .opacity(0.6)
                 }
                 .padding()
-                .frame(width: UIScreen.main.bounds.size.width)
+                .frame(width: UIScreen.main.bounds.size.width, alignment: .leading)
+                
                 .background(Color.white)
                 
                 facilitiesView
@@ -203,6 +215,6 @@ var facilitiesView: some View {
 
 struct LoungeDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        LoungeDetailView()
+        LoungeDetailView(address: "Gate W65, Hong Kong International Airport, Terminal 1, 6 Sky Plaza Rd, Lantau Island")
     }
 }

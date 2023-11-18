@@ -14,13 +14,15 @@ struct HomePageView: View {
                 VStack {
                     ZStack {
                         Rectangle()
-                            .fill(.white)
+                            .fill(Color(red: 0x00/0xff, green: 0x64/0xff, blue: 0x5a/0xff))
                             .edgesIgnoringSafeArea(.all)
                             .frame(height: 50)
                             .shadow(radius: 2)
                         HStack {
                             Image(systemName: "chair.lounge")
+                                .foregroundColor(.white)
                             Text("LoungePass")
+                                .foregroundColor(.white)
                                 .font(.title2)
                                 .fontWeight(.bold)
                         }
@@ -28,9 +30,11 @@ struct HomePageView: View {
                     }
                     Spacer()
                 }
+                .background(Color(hue: 1.0, saturation: 0.016, brightness: 0.961, opacity: 0.5))
                 VStack {
                     Text("Your Upcoming Flights")
-                        .font(.title3)
+                        .font(.title2)
+                        .fontWeight(.bold)
                         .underline()
                     itineraryViewBlock(
                         destination: AnyView(SelectBookingView()), imageName: "hkg_airport", itineraryDate: "03\nJan", fromAirport: "HKG", fromAirportTerminal: "Terminal 1", toAirport: "LHR", toAirportTerminal: "Terminal 5"
@@ -46,9 +50,10 @@ struct HomePageView: View {
                             Text("Search by Airport")
                                 .foregroundColor(.black)
                                 .bold()
-                                .overlay(
+                                .background(
                                     RoundedRectangle(cornerRadius:10)
                                         .stroke(Color.black, lineWidth: 1)
+                                        .background(.white)
                                         .frame(width: UIScreen.main.bounds.size.width*0.8, height: 50)
                                 )
                         }
@@ -79,9 +84,9 @@ struct itineraryViewBlock: View {
                     .frame(width: UIScreen.main.bounds.size.width-50, height: 100
                     )
                     .cornerRadius(10)
-                    .blur(radius: 2)
+                    .blur(radius: 0.8)
                     .overlay(Color(.white)
-                        .opacity(0.6))
+                        .opacity(0.2))
                     .opacity(0.5)
                 HStack {
                     Text(itineraryDate)

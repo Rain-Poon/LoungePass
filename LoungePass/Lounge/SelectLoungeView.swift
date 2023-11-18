@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SelectBookingView: View {
+struct SelectLoungeView: View {
     enum AccessType: String, CaseIterable, Identifiable {
         case freeAccess = "Free Access"
         case paidAccess = "Paid Access"
@@ -38,7 +38,7 @@ struct SelectBookingView: View {
     func destinationView(accessType: AccessType) -> AnyView {
         switch accessType {
         case .freeAccess:
-            return AnyView(FreeAccessView())
+            return AnyView(DisplayLoungeView())
         case .paidAccess:
             return AnyView(ContentView())
         }
@@ -46,8 +46,8 @@ struct SelectBookingView: View {
 }
 
 
-struct SelectBookingView_Previews: PreviewProvider {
+struct SelectLoungeView_Previews: PreviewProvider {
     static var previews: some View {
-        SelectBookingView()
+        SelectLoungeView()
     }
 }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FreeAccessView: View {
+struct DisplayLoungeView: View {
     var body: some View {
         // Navigation View is not defined here. Go to the main app to access the sub pages
 //        NavigationView {
@@ -107,8 +107,8 @@ struct FreeAccessViewBlock: View {
     }
 }
 
-struct FreeAccessView_Previews: PreviewProvider {
+struct DisplayLoungeView_Previews: PreviewProvider {
     static var previews: some View {
-        FreeAccessView()
+        DisplayLoungeView()
     }
 }

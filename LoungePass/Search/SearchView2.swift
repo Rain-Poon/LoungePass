@@ -63,7 +63,7 @@ struct SearchView2: View {
                         .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
                 } else {
                     List(filteredAirports) { airport in
-                        NavigationLink(destination: SelectBookingView()){ Text(airport.name)}
+                        NavigationLink(destination: SelectLoungeView()){ Text(airport.name)}
                     }
                     .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
                 }
@@ -82,7 +82,7 @@ var nearbyView: some View {
                 .foregroundColor(Color.black)
         }.padding(.top, 20.0).frame(maxWidth: UIScreen.main.bounds.size.width*0.85, alignment: .leading)
         ScrollView{
-            NavigationLink(destination:SelectBookingView()){
+            NavigationLink(destination:SelectLoungeView()){
                 VStack{
                     Spacer().frame(height:20)
                     //first direction

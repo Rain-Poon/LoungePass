@@ -13,12 +13,12 @@ struct SelectLoungeView: View {
         case paidAccess = "Paid Access"
         var id: Self { self }
     }
-    
+    @State public var airport: Airport
     @State private var selectedAccessType: AccessType = .freeAccess
     
     var body: some View {
         VStack {
-            Text("Hong Kong International Airport")
+            Text(airport.airportName)
                 .bold()
             Text("Terminal 2 (Departure)")
                 .fontWeight(.thin)
@@ -48,6 +48,6 @@ struct SelectLoungeView: View {
 
 struct SelectLoungeView_Previews: PreviewProvider {
     static var previews: some View {
-        SelectLoungeView()
+        SelectLoungeView(airport: SampleData().getData[0])
     }
 }

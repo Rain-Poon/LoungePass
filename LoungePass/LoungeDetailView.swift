@@ -78,8 +78,8 @@ struct LoungeDetailView: View {
                             .multilineTextAlignment(.leading)
                     }
                     
-//                    Text("Eligible Credit Cards:")
-//                        .padding(.vertical, 1)
+                    //                    Text("Eligible Credit Cards:")
+                    //                        .padding(.vertical, 1)
                     HStack {
                         Image(systemName: "checkmark.circle")
                             .foregroundColor(Color.green)
@@ -100,22 +100,22 @@ struct LoungeDetailView: View {
                 
                 facilitiesView(availableFacilities: lounge.availableFacilities)
                 
-//                Text("Facilities (Booking Required)")
-//                    .padding([.top, .leading, .trailing])
-//                    .frame(maxWidth: .infinity, alignment: .leading)
-//                Divider()
-//                    .padding(.horizontal)
-//                VStack(spacing: 10){
-//                    HStack(){
-//                        HStack(){
-//                            Image(systemName:"person.fill")
-//                            Text("Focus Rooms")
-//                        }.frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment:.leading)
-//                        Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-//                            Text("Book")
-//                        })
-//                    }.padding([.leading, .trailing])
-//                }
+                //                Text("Facilities (Booking Required)")
+                //                    .padding([.top, .leading, .trailing])
+                //                    .frame(maxWidth: .infinity, alignment: .leading)
+                //                Divider()
+                //                    .padding(.horizontal)
+                //                VStack(spacing: 10){
+                //                    HStack(){
+                //                        HStack(){
+                //                            Image(systemName:"person.fill")
+                //                            Text("Focus Rooms")
+                //                        }.frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment:.leading)
+                //                        Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                //                            Text("Book")
+                //                        })
+                //                    }.padding([.leading, .trailing])
+                //                }
                 Text("Featured Photos")
                     .padding([.top, .leading, .trailing])
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -140,39 +140,63 @@ struct LoungeDetailView: View {
             .foregroundColor(.black)
         )
         
+        
     }
 }
 
-func topImage(name: String) -> some View {
-    return ZStack {
-        Image("cathay_lounge")
-            .resizable(resizingMode: .stretch)
-            .frame(height:250)
-            .edgesIgnoringSafeArea(.top)
-            .overlay(
-                LinearGradient(
-                    gradient: Gradient(colors: [.clear, .white]),
-                    startPoint: .top,
-                    endPoint: .bottom
+struct topImage: View {
+    let name: String
+    @State private var isPresentingFullView = false
+    var body: some View {
+        ZStack {
+            Image("cathay_lounge")
+                .resizable(resizingMode: .stretch)
+                .frame(height:250)
+                .edgesIgnoringSafeArea(.top)
+                .overlay(
+                    LinearGradient(
+                        gradient: Gradient(colors: [.clear, .white]),
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
                 )
-            )
-        VStack {
-            Spacer()
-            Text(name)
-                .font(.title)
-                .fontWeight(.bold)
-                .padding(.horizontal)
-                .frame(maxWidth: .infinity, alignment: .leading)
-            Text("By The Cathay Group")
-                .font(.caption)
-                .fontWeight(.medium)
-                .padding(.horizontal)
-                .frame(
-                    maxWidth: .infinity,
-                    alignment: .leading)
-                .padding(.bottom)
+            VStack {
+                Spacer()
+                Text(name)
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .padding(.horizontal)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                Text("By The Cathay Group")
+                    .font(.caption)
+                    .fontWeight(.medium)
+                    .padding(.horizontal)
+                    .frame(
+                        maxWidth: .infinity,
+                        alignment: .leading)
+                    .padding(.bottom)
+            }
+            .frame(height:250)
+            
+            Button(action: {
+                isPresentingFullView = true
+            }, label: {
+                Text("Navigate")
+                    .foregroundColor(.white)
+                    .padding(5)
+                    .background(
+                        Color.blue
+                            .cornerRadius(20)
+                    )
+            })
+            .fullScreenCover(isPresented: $isPresentingFullView) {
+                MapNavigationView(dismissAction: {
+                    isPresentingFullView = false
+                }, destination: CLLocationCoordinate2D(latitude: 22.3142, longitude: 113.9246))
+            }
+            .offset(x: 140, y: -30)
+            
         }
-        .frame(height:250)
     }
 }
 
@@ -197,6 +221,43 @@ var featurePhotosView: some View {
 struct facilitiesView: View {
     let availableFacilities: [Facility]
     @State private var isPresentingFullView = false
+    
+    func JStimetoString(input: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        
+        if let date = dateFormatter.date(from: input) {
+            // Use the date object as needed
+            print(date)
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+            
+            let dateString = dateFormatter.string(from: date)
+            return dateString
+        } else {
+            print("Invalid date format")
+        }
+        
+        return "Invalid Input"
+    }
+    
+    func JStimetoString_timeonly(input: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        
+        if let date = dateFormatter.date(from: input) {
+            // Use the date object as needed
+            print(date)
+            dateFormatter.dateFormat = "HH:mm"
+            
+            let dateString = dateFormatter.string(from: date)
+            return dateString
+        } else {
+            print("Invalid date format")
+        }
+        
+        return "Invalid Input"
+    }
+    
     var body: some View {
         VStack {
             Text("Facilities")
@@ -225,13 +286,15 @@ struct facilitiesView: View {
                                             .padding(.trailing)
                                         
                                     }
+                                    .offset(x: UIScreen.main.bounds.width * 0.4)
+                                    .padding(.bottom)
                                     Text("Description")
                                     Text(availableFacilities[index].description)
                                     Text("Book")
                                     ForEach(availableFacilities[index].availableTimeSlots)
                                     {
                                         timeSlot in
-                                        Text("\(timeSlot.startTime)-\(timeSlot.endTime)")
+                                        Text("\(JStimetoString(input: timeSlot.startTime)) - \(JStimetoString_timeonly(input: timeSlot.endTime))")
                                     }
                                 }
                             }

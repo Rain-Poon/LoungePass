@@ -16,15 +16,18 @@ import UIKit
 
 struct MapNavigationView: View {
     
+    @Environment(\.presentationMode) var presentationMode
+    let dismissAction: () -> Void
+    
     @State private var directions: [String] = []
     @State private var showDirections = false
-    @State private var currentLocation = CLLocationCoordinate2D(latitude: 22.3159, longitude: 113.9366)
+    let currentLocation = CLLocationCoordinate2D(latitude: 22.3159, longitude: 113.9366)
     
-    @State private var destination = CLLocationCoordinate2D(latitude: 22.3142, longitude: 113.9246)
+    let destination: CLLocationCoordinate2D
     
     var body: some View {
         ZStack {
-            MapView(directions: $directions, currentLocation: $currentLocation, destination: $destination)
+            MapView(directions: $directions, currentLocation: currentLocation, destination: destination)
                 .edgesIgnoringSafeArea(.all)
             
             Button(action: {
@@ -40,6 +43,16 @@ struct MapNavigationView: View {
             .disabled(directions.isEmpty)
             .padding()
             .offset(y: UIScreen.main.bounds.height*0.35)
+            Button {
+                dismissAction()
+            } label: {
+                Image(systemName: "plus.circle.fill")
+                    .rotationEffect(.degrees(45))
+                    .foregroundColor(.black)
+                    .padding(.trailing)
+                
+            }
+            .offset(x: UIScreen.main.bounds.width*0.45, y: -UIScreen.main.bounds.height*0.45)
         }.sheet(isPresented: $showDirections, content: {
             VStack(spacing: 0) {
                 Text("Directions")
@@ -54,6 +67,7 @@ struct MapNavigationView: View {
                 }
             }
         })
+        
     }
 }
 
@@ -62,8 +76,8 @@ struct MapView: UIViewRepresentable {
     typealias UIViewType = MKMapView
     
     @Binding var directions: [String]
-    @Binding var currentLocation: CLLocationCoordinate2D
-    @Binding var destination: CLLocationCoordinate2D
+    let currentLocation: CLLocationCoordinate2D
+    let destination: CLLocationCoordinate2D
     
     func makeCoordinator() -> MapViewCoordinator {
         return MapViewCoordinator()
@@ -113,6 +127,7 @@ struct MapView: UIViewRepresentable {
 
 struct MapNavigationView_Previews: PreviewProvider {
     static var previews: some View {
-        MapNavigationView()
+        MapNavigationView(dismissAction: {}, destination: CLLocationCoordinate2D(latitude: 22.3142, longitude: 113.9246)
+        )
     }
 }

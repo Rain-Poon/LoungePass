@@ -16,8 +16,7 @@ extension SampleData {
                     loungeList: [
                         Lounge(
                             displayText: "The Pier, First",
-                            openingHours:"05:30:00Z",
-                            closingHour: "00:30:00Z",
+                            openingHours:"05:30:00 - 00:30:00",
                             location: " Level 6, Terminal 1, near gates 63",
                             numRaiting: 4.9,
                             availableFacilities: [
@@ -57,8 +56,7 @@ extension SampleData {
                         ),
                         Lounge(
                             displayText: "The Pier, Business",
-                            openingHours:"05:30:00Z",
-                            closingHour: "00:30:00Z",
+                            openingHours:"05:30:00 - 00:30:00",
                             location: "Level 6, Terminal 1, near gate 65",
                             numRaiting: 4.9,
                             availableFacilities: [
@@ -93,8 +91,7 @@ extension SampleData {
                         ),
                         Lounge(
                             displayText: "The Wing, First",
-                            openingHours:"05:30:00Z",
-                            closingHour: "Last departure",
+                            openingHours:"05:30:00 - Last departure",
                             location: "Level 7, Terminal 1, near gates 1-4",
                             numRaiting: 4.9,
                             availableFacilities: [
@@ -121,8 +118,7 @@ extension SampleData {
                         ),
                         Lounge(
                             displayText: "The Wing, Business",
-                            openingHours:"05:30:00Z",
-                            closingHour: "Last departure",
+                            openingHours:"05:30:00 - Last departure",
                             location: "Level 6, Terminal 1 near gates 2",
                             numRaiting: 4.9,
                             availableFacilities: [
@@ -149,8 +145,7 @@ extension SampleData {
                         ),
                         Lounge(
                             displayText: "The Deck",
-                            openingHours:"05:30:00Z",
-                            closingHour: "00:30:00Z",
+                            openingHours:"05:30:00 - 00:30:00",
                             location: "Level 7, Terminal 1 near Gate 6",
                             numRaiting: 4.9,
                             availableFacilities: [

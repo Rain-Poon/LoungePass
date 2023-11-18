@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		9804F7012AF1607500442DCC /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9804F7002AF1607500442DCC /* SearchView.swift */; };
 		ED03208D2AF3485400ECC80A /* SearchView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED03208C2AF3485400ECC80A /* SearchView2.swift */; };
+		ED377B5B2B08757200791774 /* MapNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED377B5A2B08757200791774 /* MapNavigationView.swift */; };
+		ED377B5E2B088F0C00791774 /* ListenToNotificationChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED377B5D2B088F0C00791774 /* ListenToNotificationChanges.swift */; };
 		ED86CFB22AF0D8440057B0F9 /* LoungePassApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED86CFB12AF0D8440057B0F9 /* LoungePassApp.swift */; };
 		ED86CFB42AF0D8440057B0F9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED86CFB32AF0D8440057B0F9 /* ContentView.swift */; };
 		ED86CFB62AF0D8490057B0F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED86CFB52AF0D8490057B0F9 /* Assets.xcassets */; };
@@ -24,6 +26,8 @@
 /* Begin PBXFileReference section */
 		9804F7002AF1607500442DCC /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		ED03208C2AF3485400ECC80A /* SearchView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView2.swift; sourceTree = "<group>"; };
+		ED377B5A2B08757200791774 /* MapNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapNavigationView.swift; sourceTree = "<group>"; };
+		ED377B5D2B088F0C00791774 /* ListenToNotificationChanges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenToNotificationChanges.swift; sourceTree = "<group>"; };
 		ED86CFAE2AF0D8440057B0F9 /* LoungePass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoungePass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED86CFB12AF0D8440057B0F9 /* LoungePassApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoungePassApp.swift; sourceTree = "<group>"; };
 		ED86CFB32AF0D8440057B0F9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -48,6 +52,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ED377B5C2B088EF300791774 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				ED377B5A2B08757200791774 /* MapNavigationView.swift */,
+				ED377B5D2B088F0C00791774 /* ListenToNotificationChanges.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		ED86CFA52AF0D8440057B0F9 = {
 			isa = PBXGroup;
 			children = (
@@ -67,6 +80,7 @@
 		ED86CFB02AF0D8440057B0F9 /* LoungePass */ = {
 			isa = PBXGroup;
 			children = (
+				ED377B5C2B088EF300791774 /* Components */,
 				ED86CFC42AF0E0FA0057B0F9 /* ItinerarySearch.swift */,
 				ED86CFCB2AF0F13D0057B0F9 /* HomePageView.swift */,
 				EDF3D5A52AF1593A0039F034 /* LoungeDetailView.swift */,
@@ -163,12 +177,14 @@
 			files = (
 				9804F7012AF1607500442DCC /* SearchView.swift in Sources */,
 				ED86CFB42AF0D8440057B0F9 /* ContentView.swift in Sources */,
+				ED377B5B2B08757200791774 /* MapNavigationView.swift in Sources */,
 				EDF3D5A62AF1593A0039F034 /* LoungeDetailView.swift in Sources */,
 				ED86CFC62AF0E0FA0057B0F9 /* SearchResultView.swift in Sources */,
 				ED86CFCE2AF145260057B0F9 /* SelectBookingView.swift in Sources */,
 				ED03208D2AF3485400ECC80A /* SearchView2.swift in Sources */,
 				ED86CFC52AF0E0FA0057B0F9 /* ItinerarySearch.swift in Sources */,
 				ED86CFB22AF0D8440057B0F9 /* LoungePassApp.swift in Sources */,
+				ED377B5E2B088F0C00791774 /* ListenToNotificationChanges.swift in Sources */,
 				ED86CFD22AF14A370057B0F9 /* FreeAccessView.swift in Sources */,
 				ED86CFCC2AF0F13D0057B0F9 /* HomePageView.swift in Sources */,
 			);

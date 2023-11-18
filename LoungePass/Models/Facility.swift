@@ -16,5 +16,5 @@ struct timeSlot {
 struct Facility {
     var displayName: String
     var description: String
-    var availableTimeSlots: [timeSlot]
+    var availableTimeSlots: [timeSlot]?
 }

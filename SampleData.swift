@@ -11,13 +11,13 @@ extension SampleData {
     func getData() -> [Airport]{
         return [
             Airport(
-                    name: "Hong Kong International Airport",
-                    airportLocation: CLLocationCoordinate2D(latitude:22.31401655880972, , longitude:113.91470760455398),
+                    airportName: "Hong Kong International Airport",
+                    airportLocation: CLLocationCoordinate2D(latitude:22.31401655880972, longitude:113.91470760455398),
                     loungeList: [
                         Lounge(
-                            displayText: "The Pier, First",
+                        displayName: "The Pier, First",
                             openingHours:"05:30:00 - 00:30:00",
-                            location: " Level 6, Terminal 1, near gates 63",
+                            locationDescription: " Level 6, Terminal 1, near gates 63",
                             numRaiting: 4.9,
                             availableFacilities: [
                                 Facility(displayName: "The Retreat", description: "Furnished with a daybed, reading light, and privacy curtains", availableTimeSlots: [
@@ -32,7 +32,7 @@ extension SampleData {
                                 ]),
                                 Facility(displayName: "Shower Rooms", description: "Stocked with fluffy towels and premium amenities to freshen up before your flight", availableTimeSlots: [
                                     timeSlot(startTime: "2023-11-18T10:00:00Z", endTime: "2023-11-18T11:00:00Z", numRemainingSlots: 2),
-                                    timeSlot(startTime: "2023-11-18T11:00:00Z", endTime: "2023-11-18T12:00:00Z", numRemainingSlots: 3)
+                                    timeSlot(startTime: "2023-11-18T11:00:00Z", endTime: "2023-11-18T12:00:00Z", numRemainingSlots: 3),
                                     timeSlot(startTime: "2023-11-18T12:00:00Z", endTime: "2023-11-18T13:00:00Z", numRemainingSlots: 3),
                                     timeSlot(startTime: "2023-11-18T13:00:00Z", endTime: "2023-11-18T14:00:00Z", numRemainingSlots: 4),
                                     timeSlot(startTime: "2023-11-18T14:00:00Z", endTime: "2023-11-18T15:00:00Z", numRemainingSlots: 1)
@@ -47,10 +47,10 @@ extension SampleData {
                             loungeLocation: CLLocationCoordinate2D(latitude:22.31426084015667, longitude:113.92528027285356)
                         ),
                         Lounge(
-                            displayText: "The Pier, Business",
+                            displayName: "The Pier, Business",
                             openingHours:"05:30:00 - 00:30:00",
-                            location: "Level 6, Terminal 1, near gate 65",
-                            numRaiting: 4.9,
+                            locationDescription: "Level 6, Terminal 1, near gate 65",
+                            numRaiting: 4.6,
                             availableFacilities: [
                                 Facility(displayName: "Flavours of China", description: "Satisfy your palate for Chinese comfort foods—sample dim sum, char siu buns, dumplings, and other regional specials."),
                                 Facility(displayName: "Teahouse", description: "Offers tipple and signature cocktails"),
@@ -69,10 +69,10 @@ extension SampleData {
                             loungeLocation: CLLocationCoordinate2D(latitude:22.31426084015667, longitude:113.92528027285356)
                         ),
                         Lounge(
-                            displayText: "The Wing, First",
+                            displayName: "The Wing, First",
                             openingHours:"05:30:00 - Last departure",
-                            location: "Level 7, Terminal 1, near gates 1-4",
-                            numRaiting: 4.9,
+                            locationDescription: "Level 7, Terminal 1, near gates 1-4",
+                            numRaiting: 4.85,
                             availableFacilities: [
                                 Facility(displayName: "Cabana & Shower suites", description: "Temperature-controlled Cabana comes with a large bath and rain shower, comfortable day bed, and ample working space with outlets and connectivity. Offers ironing services at the touch of a button", availableTimeSlots: [
                                     timeSlot(startTime: "2023-11-18T08:00:00Z", endTime: "2023-11-18T08:30:00Z", numRemainingSlots: 3),
@@ -89,10 +89,10 @@ extension SampleData {
                             loungeLocation: CLLocationCoordinate2D(latitude:22.312989821869934, longitude:113.93562012578701)
                         ),
                         Lounge(
-                            displayText: "The Wing, Business",
+                            displayName: "The Wing, Business",
                             openingHours:"05:30:00 - Last departure",
-                            location: "Level 6, Terminal 1 near gates 2",
-                            numRaiting: 4.9,
+                            locationDescription: "Level 6, Terminal 1 near gates 2",
+                            numRaiting: 4.7,
                             availableFacilities: [
                                 Facility(displayName: "Noodle Bar", description: "Serving freshly made Asian dishes, such as dan dan noodles, char siu buns, dumplings, and regional specials"),
                                 Facility(displayName: "Long Bar", description: "Sip a glass of premium champagne or a fine wine with scenic overlooks of the tarmac"),
@@ -104,10 +104,10 @@ extension SampleData {
                             loungeLocation: CLLocationCoordinate2D(latitude:22.315100775435386,  longitude:113.93395654847366)
                         ),
                         Lounge(
-                            displayText: "The Deck",
+                            displayName: "The Deck",
                             openingHours:"05:30:00 - 00:30:00",
-                            location: "Level 7, Terminal 1 near Gate 6",
-                            numRaiting: 4.9,
+                            locationDescription: "Level 7, Terminal 1 near Gate 6",
+                            numRaiting: 4.8,
                             availableFacilities: [
                                 Facility(displayName: "Noodle Bar", description: "Serves a freshly made selection of Asian specialties such as Sichuanese dan dan noodles, Singapore Laksa, and Taiwanese beef noodles,"),
                                 Facility(displayName: "The Terrace", description: "Open area balcony with sunset view"),
@@ -115,7 +115,7 @@ extension SampleData {
                                     timeSlot(startTime: "2023-11-18T08:00:00Z", endTime: "2023-11-18T08:30:00Z", numRemainingSlots: 1),
                                     timeSlot(startTime: "2023-11-18T08:30:00Z", endTime: "2023-11-18T09:00:00Z", numRemainingSlots: 2),
                                     timeSlot(startTime: "2023-11-18T09:00:00Z", endTime: "2023-11-18T09:30:00Z", numRemainingSlots: 2),
-                                    timeSlot(startTime: "2023-11-18T09:30:00Z", endTime: "2023-11-18T10:00:00Z", numRemainingSlots: 2)
+                                    timeSlot(startTime: "2023-11-18T09:30:00Z", endTime: "2023-11-18T10:00:00Z", numRemainingSlots: 2),
                                     timeSlot(startTime: "2023-11-18T10:00:00Z", endTime: "2023-11-18T10:30:00Z", numRemainingSlots: 3),
                                     timeSlot(startTime: "2023-11-18T10:30:00Z", endTime: "2023-11-18T11:00:00Z", numRemainingSlots: 3),
                                     timeSlot(startTime: "2023-11-18T11:00:00Z", endTime: "2023-11-18T11:30:00Z", numRemainingSlots: 1),
@@ -130,14 +130,14 @@ extension SampleData {
                     ]
                 ),
             Airport(
-                    name: "Beijing Capital International Airport",
+                    airportName: "Beijing Capital International Airport",
                     airportLocation: CLLocationCoordinate2D(latitude:40.5436387598461, longitude:117.02843769447915),
                     loungeList: [
                         Lounge(
-                            displayText: "Cathay Pacific Lounge",
+                            displayName: "Cathay Pacific Lounge",
                             openingHours:"04:35:00 - 18:40:00",
-                            location: "Terminal 3 Upstairs (Level 3), next to Gate E20",
-                            numRaiting: 4.9,
+                            locationDescription: "Terminal 3 Upstairs (Level 3), next to Gate E20",
+                            numRaiting: 4.4,
                             availableFacilities: [
                                 Facility(displayName: "Food and beverages bar", description: " Buffet style food and buffet bar for your pre-flight meal "),
                                 Facility(displayName: "Work stations", description: "Offers quiet working station high speed Wi-Fi")
@@ -148,18 +148,18 @@ extension SampleData {
                         )
                     ]),
             Airport(
-                    name: "Haneda Airport",
+                    airportName: "Haneda Airport",
                     airportLocation: CLLocationCoordinate2D(latitude:35.549607232336285,  longitude:139.77991372344744),
                     loungeList: [
                         Lounge(
-                            displayText: "Cathay Pacific Lounge",
+                            displayName: "Cathay Pacific Lounge",
                             openingHours:"07:30:00 - 17:00:00",
-                            location: "Terminal 3, Level 6",
-                            numRaiting: 4.9,
+                            locationDescription:"Terminal 3, Level 6",
+                            numRaiting: 4.5,
                             availableFacilities: [
-                                Facility(displayName: "Noodle Bar", description: "Serves a freshly made selection of Asian specialties such as Sichuanese dan dan noodles, Singapore Laksa, and Taiwanese beef noodles,",
+                                Facility(displayName: "Noodle Bar", description: "Serves a freshly made selection of Asian specialties such as Sichuanese dan dan noodles, Singapore Laksa, and Taiwanese beef noodles,"),
                                 Facility(displayName: "Food and beverages bar", description: " Buffet style food and buffet bar for your pre-flight meal "),
-                                Facility(displayName: "Work stations", description: "Including phones, printers, and high-speed Wi-Fi access")
+                                Facility(displayName: "Work stations", description: "Including phones, printers, and high-speed Wi-Fi access"),
                             ],
                             displayDescription: "Welcome to our Haneda Lounge at Tokyo International Airport—designed to engage the senses, and create a true feeling of wellbeing throughout your stay.",
                             loungeLocation: CLLocationCoordinate2D(latitude:35.547887268172275, longitude:139.76833519761811)
@@ -167,14 +167,14 @@ extension SampleData {
                         )
                     ]
                     )
-            
+     ]
     }
 
 }
 
 struct SampleData {
-    public let airports: [Airport] = []
-    public let lounges: [Lounge] = []
-    public let facilities: [Facility] = []
+    // public let airports: [Airport] = []
+    // public let lounges: [Lounge] = []
+    // public let facilities: [Facility] = []
 }
-
+                    

@@ -8,10 +8,12 @@
 import Foundation
 
 struct timeSlot {
-    var startTime: String;
+    var startTime: String
     var endTime: String
+    var numRemainingSlots: Int
 }
 
 struct Facility {
-    var arrayList: [timeSlot]
+    var displayName: String
+    var availableTimeSlots: [timeSlot]
 }

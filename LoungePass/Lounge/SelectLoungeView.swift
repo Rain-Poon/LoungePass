@@ -40,7 +40,11 @@ struct SelectLoungeView: View {
         case .freeAccess:
             return AnyView(DisplayLoungeView(loungeList: loungeList))
         case .paidAccess:
-            return AnyView(ContentView())
+            return AnyView(
+                VStack {
+                    Spacer()
+                }
+            )
         }
     }
 }

@@ -86,30 +86,34 @@ var nearbyView: some View {
                 VStack{
                     Spacer().frame(height:20)
                     //first direction
-                    ZStack{
+                    VStack (spacing: 50) {
                         ForEach(airports){airport in
-                            Image("hkg_airport")
-                                .resizable(resizingMode: .stretch)
-                                .frame(width: UIScreen.main.bounds.size.width-50, height: 100
-                                )
-                                .cornerRadius(10)
-                                .blur(radius: 2)
-                                .opacity(0.7)
-                            VStack{
-                                HStack{
-                                    Image(systemName: "location")
-                                        .foregroundColor(Color.black)
-                                    Text("31.8m")
-                                        .font(.body)
-                                        .foregroundColor(Color.black)
-                                }.frame(maxWidth: UIScreen.main.bounds.size.width*0.8, alignment:.topTrailing)
-                                Spacer().frame(height:30)
-                                Text(airport.airportName)
-                                    .font(.title3)
-                                    .fontWeight(.heavy)
-                                    .foregroundColor(Color.black).frame(maxWidth: UIScreen.main.bounds.size.width*0.8
-                                                                        , alignment: .leading)
+                            ZStack {
+                                Image(String(Int.random(in: 1..<6)))
+                                    .resizable(resizingMode: .stretch)
+                                    .frame(width: UIScreen.main.bounds.size.width-50, height: 120
+                                    )
+                                    .cornerRadius(10)
+                                    .blur(radius: 2)
+                                    .opacity(0.7)
+                                VStack{
+                                    HStack{
+                                        Image(systemName: "location")
+                                            .foregroundColor(Color.black)
+                                        Text("31.8m")
+                                            .font(.body)
+                                            .foregroundColor(Color.black)
+                                    }.frame(maxWidth: UIScreen.main.bounds.size.width*0.8, alignment:.topTrailing)
+                                    Spacer().frame(height:40)
+                                    Text(airport.airportName)
+                                        .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
+                                        .font(.title3)
+                                        .fontWeight(.heavy)
+                                        .foregroundColor(Color.black).frame(maxWidth: UIScreen.main.bounds.size.width*0.8
+                                                                            , alignment: .leading)
+                                }
                             }
+                            
                         }
                     }
                 }

@@ -16,14 +16,14 @@ let columns = [
     GridItem(.flexible(), alignment: .leading),
     GridItem(.flexible(), alignment: .leading)
 ]
-let grids = [
-    ("person.fill", "250 Seats"),
-    ("chair.lounge.fill", "20 Sleeping Chairs"),
-    ("studentdesk", "20 Working Desks"),
-    ("shower.fill", "5 Showers"),
-    ("powerplug.fill", "10 Charging Ports"),
-    ("table.furniture.fill", "40 Dining Tables")
-]
+//let grids = [
+//    ("person.fill", "250 Seats"),
+//    ("chair.lounge.fill", "20 Sleeping Chairs"),
+//    ("studentdesk", "20 Working Desks"),
+//    ("shower.fill", "5 Showers"),
+//    ("powerplug.fill", "10 Charging Ports"),
+//    ("table.furniture.fill", "40 Dining Tables")
+//]
 
 struct LoungeDetailView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -218,9 +218,10 @@ var featurePhotosView: some View {
     }
 }
 
-struct facilitiesView: View {
-    let availableFacilities: [Facility]
-    @State private var isPresentingFullView = false
+struct facilitiesDetailView: View {
+    @Binding public var isPresentingFullView: Bool
+    @State public var facility: Facility
+    @State private var showConfirmAlert: Bool = false
     
     func JStimetoString(input: String) -> String {
         let dateFormatter = DateFormatter()
@@ -259,6 +260,83 @@ struct facilitiesView: View {
     }
     
     var body: some View {
+        ScrollView {
+            VStack(alignment:.leading){
+                
+                Button {
+                    isPresentingFullView = false
+                } label: {
+                    Image(systemName: "plus.circle.fill")
+                        .rotationEffect(.degrees(45))
+                        .foregroundColor(.black)
+                        .padding(.trailing)
+                    
+                }
+//                                        .offset(x: UIScreen.main.bounds.width * 0.4)
+                .padding(.bottom)
+                Text(facility.displayName)
+                    .font(.title)
+                    .bold()
+
+                Text("Description")
+                    .bold()
+                Divider()
+                Text(facility.description)
+                    .padding(_:[.bottom], 10)
+                if (facility.availableTimeSlots.count > 0){
+                    Text("Book")
+                        .bold()
+                    Divider()
+                        
+                    
+                        ForEach(facility.availableTimeSlots)
+                        {timeSlot in
+                            HStack{
+                            Text("\(JStimetoString(input: timeSlot.startTime)) - \(JStimetoString_timeonly(input: timeSlot.endTime))")
+                                Spacer()
+                                Button("Book"){
+                                    showConfirmAlert = true
+                                }
+                                .alert(
+                                    Text("Confirm Booking"),
+                                    isPresented: $showConfirmAlert
+                                ){
+                                    Button{
+                                        showConfirmAlert = false
+                                    } label: {
+                                        Text("Confirm")
+                                    }
+                                    Button("Cancel"){
+    
+                                    }
+                                }
+
+                        }
+                    }
+                } else {
+                    Text("Booking not required")
+                        .bold()
+                }
+                
+                    
+                    
+                
+                }
+            .padding(.horizontal)
+                
+        }
+        .transition(.move(edge: .leading))
+    }
+    
+}
+
+struct facilitiesView: View {
+    let availableFacilities: [Facility]
+    @State private var isPresentingFullView = false
+    @State private var facilitiyNum = 0;
+    
+    var body: some View {
+        
         VStack {
             Text("Facilities")
                 .padding(.horizontal)
@@ -272,34 +350,11 @@ struct facilitiesView: View {
                         //                        .frame(width: 20)
                         Button(availableFacilities[index].displayName){
                             isPresentingFullView = true
+                            facilitiyNum = index
                         }
                         .opacity(0.7)
                         .fullScreenCover(isPresented: $isPresentingFullView) {
-                            ScrollView {
-                                VStack{
-                                    Button {
-                                        isPresentingFullView = false
-                                    } label: {
-                                        Image(systemName: "plus.circle.fill")
-                                            .rotationEffect(.degrees(45))
-                                            .foregroundColor(.black)
-                                            .padding(.trailing)
-                                        
-                                    }
-                                    .offset(x: UIScreen.main.bounds.width * 0.4)
-                                    .padding(.bottom)
-                                    Text("Description")
-                                    Text(availableFacilities[index].description)
-                                    Text("Book")
-                                    ForEach(availableFacilities[index].availableTimeSlots)
-                                    {
-                                        timeSlot in
-                                        Text("\(JStimetoString(input: timeSlot.startTime)) - \(JStimetoString_timeonly(input: timeSlot.endTime))")
-                                    }
-                                }
-                            }
-                            .transition(.move(edge: .leading))
-                            
+                            facilitiesDetailView(isPresentingFullView: $isPresentingFullView, facility: availableFacilities[facilitiyNum])
                         }
                     }
                     

@@ -15,6 +15,11 @@
 		ED377B6E2B08BEE200791774 /* Lounge.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED377B6D2B08BEE200791774 /* Lounge.swift */; };
 		ED377B702B08BFB200791774 /* Airport.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED377B6F2B08BFB200791774 /* Airport.swift */; };
 		ED377B732B08C49000791774 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED377B722B08C49000791774 /* SampleData.swift */; };
+		ED377B752B08F2BE00791774 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED377B742B08F2BE00791774 /* NotificationManager.swift */; };
+		ED377B772B08FA7C00791774 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED377B762B08FA7C00791774 /* BannerView.swift */; };
+		ED377B792B090B0B00791774 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED377B782B090B0B00791774 /* Notification.swift */; };
+		ED377B7C2B09140A00791774 /* DataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED377B7B2B09140A00791774 /* DataFetcher.swift */; };
+		ED377B7E2B0914DA00791774 /* NotificationPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED377B7D2B0914DA00791774 /* NotificationPopUp.swift */; };
 		ED86CFB22AF0D8440057B0F9 /* LoungePassApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED86CFB12AF0D8440057B0F9 /* LoungePassApp.swift */; };
 		ED86CFB42AF0D8440057B0F9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED86CFB32AF0D8440057B0F9 /* ContentView.swift */; };
 		ED86CFB62AF0D8490057B0F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED86CFB52AF0D8490057B0F9 /* Assets.xcassets */; };
@@ -34,6 +39,11 @@
 		ED377B6D2B08BEE200791774 /* Lounge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lounge.swift; sourceTree = "<group>"; };
 		ED377B6F2B08BFB200791774 /* Airport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Airport.swift; sourceTree = "<group>"; };
 		ED377B722B08C49000791774 /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
+		ED377B742B08F2BE00791774 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		ED377B762B08FA7C00791774 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
+		ED377B782B090B0B00791774 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		ED377B7B2B09140A00791774 /* DataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetcher.swift; sourceTree = "<group>"; };
+		ED377B7D2B0914DA00791774 /* NotificationPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPopUp.swift; sourceTree = "<group>"; };
 		ED86CFAE2AF0D8440057B0F9 /* LoungePass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoungePass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED86CFB12AF0D8440057B0F9 /* LoungePassApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoungePassApp.swift; sourceTree = "<group>"; };
 		ED86CFB32AF0D8440057B0F9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -61,7 +71,10 @@
 			children = (
 				ED377B5A2B08757200791774 /* MapNavigationView.swift */,
 				ED377B5D2B088F0C00791774 /* ListenToNotificationChanges.swift */,
+				ED377B742B08F2BE00791774 /* NotificationManager.swift */,
 				ED377B5F2B08A96A00791774 /* GetLocationView.swift */,
+				ED377B762B08FA7C00791774 /* BannerView.swift */,
+				ED377B7D2B0914DA00791774 /* NotificationPopUp.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -98,8 +111,17 @@
 				ED377B6B2B08BE1900791774 /* Facility.swift */,
 				ED377B6D2B08BEE200791774 /* Lounge.swift */,
 				ED377B6F2B08BFB200791774 /* Airport.swift */,
+				ED377B782B090B0B00791774 /* Notification.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		ED377B7A2B0913FC00791774 /* Backend */ = {
+			isa = PBXGroup;
+			children = (
+				ED377B7B2B09140A00791774 /* DataFetcher.swift */,
+			);
+			path = Backend;
 			sourceTree = "<group>";
 		};
 		ED86CFA52AF0D8440057B0F9 = {
@@ -122,6 +144,7 @@
 		ED86CFB02AF0D8440057B0F9 /* LoungePass */ = {
 			isa = PBXGroup;
 			children = (
+				ED377B7A2B0913FC00791774 /* Backend */,
 				ED377B6A2B08BE0100791774 /* Models */,
 				ED377B672B08B32E00791774 /* Lounge */,
 				ED377B5C2B088EF300791774 /* Components */,
@@ -224,9 +247,14 @@
 				ED377B6C2B08BE1900791774 /* Facility.swift in Sources */,
 				ED377B5E2B088F0C00791774 /* ListenToNotificationChanges.swift in Sources */,
 				ED377B6E2B08BEE200791774 /* Lounge.swift in Sources */,
+				ED377B7E2B0914DA00791774 /* NotificationPopUp.swift in Sources */,
 				ED86CFD22AF14A370057B0F9 /* DisplayLoungeView.swift in Sources */,
+				ED377B772B08FA7C00791774 /* BannerView.swift in Sources */,
+				ED377B752B08F2BE00791774 /* NotificationManager.swift in Sources */,
 				ED377B602B08A96A00791774 /* GetLocationView.swift in Sources */,
+				ED377B7C2B09140A00791774 /* DataFetcher.swift in Sources */,
 				ED86CFCC2AF0F13D0057B0F9 /* HomePageView.swift in Sources */,
+				ED377B792B090B0B00791774 /* Notification.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import UIKit
+import MapKit
 
 struct SearchView2: View {
     @State private var searchText = ""
@@ -17,11 +18,11 @@ struct SearchView2: View {
     }
     
     let airports = [
-        Airport(name: "John F. Kennedy International Airport"),
-        Airport(name: "Los Angeles International Airport"),
-        Airport(name: "Heathrow Airport"),
-        Airport(name: "Tokyo Haneda Airport"),
-        Airport(name: "Hong Kong International Airport")
+        Airport(name: "John F. Kennedy International Airport", Location: CLLocationCoordinate2D(latitude: 0, longitude: 0), loungeList: []),
+        Airport(name: "Los Angeles International Airport", Location: CLLocationCoordinate2D(latitude: 0, longitude: 0), loungeList: []),
+        Airport(name: "Heathrow Airport", Location: CLLocationCoordinate2D(latitude: 0, longitude: 0), loungeList: []),
+        Airport(name: "Tokyo Haneda Airport", Location: CLLocationCoordinate2D(latitude: 0, longitude: 0), loungeList: []),
+        Airport(name: "Hong Kong International Airport", Location: CLLocationCoordinate2D(latitude: 0, longitude: 0), loungeList: [])
     ]
     
     var filteredAirports: [Airport] {

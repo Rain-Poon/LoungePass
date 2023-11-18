@@ -12,6 +12,6 @@ import MapKit
 struct Airport: Identifiable  {
     let id = UUID()
     let name: String
-    var Location: CLLocationCoordinate2D?
-    var loungeList: [Lounge]?
+    var Location: CLLocationCoordinate2D
+    var loungeList: [Lounge]
 }

@@ -8,11 +8,6 @@
 import SwiftUI
 import UIKit
 
-struct Airport: Identifiable {
-    let id = UUID()
-    let name: String
-}
-
 struct SearchView2: View {
     @State private var searchText = ""
     @State private var isShowNearby = true

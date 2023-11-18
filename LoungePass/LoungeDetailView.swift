@@ -287,8 +287,6 @@ struct facilitiesDetailView: View {
                     Text("Book")
                         .bold()
                     Divider()
-                        
-                    
                         ForEach(facility.availableTimeSlots)
                         {timeSlot in
                             HStack{

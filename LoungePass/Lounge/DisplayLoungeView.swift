@@ -95,6 +95,7 @@ struct FreeAccessViewBlock: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                     HStack(alignment: .top, content: {
                         Text(distance)
+                            .multilineTextAlignment(.leading)
                             .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/,
                                    alignment: .leading
                             )

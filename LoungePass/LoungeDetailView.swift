@@ -45,7 +45,7 @@ struct LoungeDetailView: View {
     
     var body: some View {
         ScrollView {
-            topImage(name: lounge.displayName)
+            topImage(name: lounge.displayName, coor: lounge.loungeLocation)
             VStack {
                 VStack (alignment: .leading) {
                     // Rating
@@ -146,6 +146,7 @@ struct LoungeDetailView: View {
 
 struct topImage: View {
     let name: String
+    let coor: CLLocationCoordinate2D
     @State private var isPresentingFullView = false
     var body: some View {
         ZStack {
@@ -192,7 +193,7 @@ struct topImage: View {
             .fullScreenCover(isPresented: $isPresentingFullView) {
                 MapNavigationView(dismissAction: {
                     isPresentingFullView = false
-                }, destination: CLLocationCoordinate2D(latitude: 22.3142, longitude: 113.9246))
+                }, destination: coor)
             }
             .offset(x: 140, y: -30)
             

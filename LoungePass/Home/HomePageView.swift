@@ -61,6 +61,7 @@ struct HomePageView: View {
                     })
                     .padding()
                 }
+                NotificationPopUp()
             }
         }
         

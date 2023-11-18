@@ -11,9 +11,18 @@ import SwiftUI
 class DataFetcher: ObservableObject {
     @Published var states: Notification = Notification()
     @Published var text: String = ""
-    @Published var clickText: String = ""
     @Published var flag: Bool = false
     @Published var endpoint: String = ""
+    @Published var views: [AnyView] = [
+        AnyView(SelectLoungeView(airport: SampleData().getData[0])),
+        AnyView(LoungeDetailView(address: "Gate W65, Hong Kong International Airport, Terminal 1, 6 Sky Plaza Rd, Lantau Island", lounge: SampleData().getData[0].loungeList[0])),
+        AnyView(LoungeDetailView(address: "Gate W65, Hong Kong International Airport, Terminal 1, 6 Sky Plaza Rd, Lantau Island", lounge: SampleData().getData[0].loungeList[4])),
+        AnyView(LoungeDetailView(address: "Gate W65, Hong Kong International Airport, Terminal 1, 6 Sky Plaza Rd, Lantau Island", lounge: SampleData().getData[0].loungeList[2])),
+        AnyView(LoungeDetailView(address: "Gate W65, Hong Kong International Airport, Terminal 1, 6 Sky Plaza Rd, Lantau Island", lounge: SampleData().getData[0].loungeList[3])),
+        AnyView(SelectLoungeView(airport: SampleData().getData[1]))
+        
+    ]
+    @Published var viewToShow: AnyView = AnyView(Spacer())
     
     private var timer: Timer?
     
@@ -69,34 +78,33 @@ class DataFetcher: ObservableObject {
                 self?.states = fetchedPost
                 
                 if (self?.states.tryNew == true) {
-                    self?.text = "Try our new features!"
-                    self?.clickText = "Check it out"
+                    self?.text = "Try out our new features!"
                     self?.endpoint = "trynew"
+                    self?.viewToShow = (self?.views[0])!
                 } else if ((self?.states.oneDayPrior) == true) {
-                    self?.text = "There's only one day left to the flight!"
-                    self?.clickText = "Click to see the available lounges"
+                    self?.text = "It’s self-pamper time! Try out our top-notch massage services at The Pier, First!"
                     self?.endpoint = "onedayprior"
+                    self?.viewToShow = (self?.views[1])!
                 } else if ((self?.states.arriveAirport) == true) {
-                    self?.text = "Welcome to Hong Kong International Airport!"
-                    self?.clickText = "Click to see the available lounges"
+                    self?.text = "Check out today’s lovely sunset at The Deck with us!"
                     self?.endpoint = "arriveairport"
+                    self?.viewToShow = (self?.views[2])!
                 } else if ((self?.states.boardingGateConfirmed) == true) {
                     print("here")
-                    self?.text = "Boarding gate is confirmed."
-                    self?.clickText = "Click to see the lounges near to the boarding gate"
+                    self?.text = "Take a break from your hectic schedule - The Wing, First is just a minute walk from your Departure Gate 2."
                     self?.endpoint = "boardinggateconfirmed"
+                    self?.viewToShow = (self?.views[3])!
                 } else if ((self?.states.oneHourPriorBoarding) == true) {
-                    self?.text = "One hour to the flight!"
-                    self?.clickText = "Click to see the available lounges"
+                    self?.text = "Come and get a sneak peek at where MIRROR shot their latest MV at The Wing, Business!"
                     self?.endpoint = "onehourpriorboarding"
+                    self?.viewToShow = (self?.views[4])!
                 } else if ((self?.states.thirtyMinPriorBoarding) == true) {
                     self?.text = "30 mins to the flight!"
-                    self?.clickText = "Click to see the available lounges"
                     self?.endpoint = "thirtyminpriorboarding"
                 } else if ((self?.states.postFlight) == true) {
-                    self?.text = "Thanks for taking Cathay Pacific's flight"
-                    self?.clickText = "Click to see lounges for next flight"
+                    self?.text = "Thanks for taking Cathay Pacific's flight! Click to see lounges for next flight!"
                     self?.endpoint = "postflight"
+                    self?.viewToShow = (self?.views[5])!
                 }
                 
             } catch {

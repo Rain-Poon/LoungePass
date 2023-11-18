@@ -7,14 +7,16 @@
 
 import Foundation
 
-struct timeSlot {
+struct timeSlot: Identifiable {
     var startTime: String
     var endTime: String
     var numRemainingSlots: Int
+    var id = UUID()
 }
 
-struct Facility {
+struct Facility: Identifiable {
     var displayName: String
     var description: String
-    var availableTimeSlots: [timeSlot]?
+    var availableTimeSlots: [timeSlot] 
+    var id = UUID()
 }

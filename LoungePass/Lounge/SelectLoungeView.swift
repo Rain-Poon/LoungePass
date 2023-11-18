@@ -29,16 +29,16 @@ struct SelectLoungeView: View {
             }
             .pickerStyle(.segmented)
             .padding()
-            destinationView(accessType: selectedAccessType)   
+            destinationView(accessType: selectedAccessType, loungeList: airport.loungeList)
         }
         .navigationBarTitle("LoungePass", displayMode: .inline)
     }
         
     
-    func destinationView(accessType: AccessType) -> AnyView {
+    func destinationView(accessType: AccessType, loungeList: [Lounge]) -> AnyView {
         switch accessType {
         case .freeAccess:
-            return AnyView(DisplayLoungeView())
+            return AnyView(DisplayLoungeView(loungeList: loungeList))
         case .paidAccess:
             return AnyView(ContentView())
         }

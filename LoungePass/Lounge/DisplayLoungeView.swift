@@ -8,12 +8,17 @@
 import SwiftUI
 
 struct DisplayLoungeView: View {
+    @State public var loungeList: [Lounge]
     var body: some View {
         // Navigation View is not defined here. Go to the main app to access the sub pages
 //        NavigationView {
             ScrollView {
-                FreeAccessViewBlock(destination: AnyView(LoungeDetailView(address: "Gate W65, Hong Kong International Airport, Terminal 1, 6 Sky Plaza Rd, Lantau Island")), imageName: "cathay_lounge", maxCapcity: 250, currentOccupation: 82, displayName: "Cathay Lounge", distance: "0.5 km away");
-                FreeAccessViewBlock(destination: AnyView(LoungeDetailView(address: "Gate W65, Hong Kong International Airport, Terminal 1, 6 Sky Plaza Rd, Lantau Island")), imageName: "plaza_premium_lounge",maxCapcity: 250,currentOccupation: 163, displayName: "Plaza Premium Lounge", distance: "0.8 km away");
+                ForEach(0..<loungeList.count, id: \.self){index in
+                    FreeAccessViewBlock(destination: AnyView(LoungeDetailView(address: loungeList[index].locationDescription, lounge: loungeList[index])), imageName: "cathay_lounge", maxCapcity: 250, currentOccupation: 83, displayName: loungeList[index].displayName, distance: loungeList[index].locationDescription)
+                }
+                
+//                FreeAccessViewBlock(destination: AnyView(LoungeDetailView(address: "Gate W65, Hong Kong International Airport, Terminal 1, 6 Sky Plaza Rd, Lantau Island")), imageName: "cathay_lounge", maxCapcity: 250, currentOccupation: 82, displayName: "Cathay Lounge", distance: "0.5 km away");
+//                FreeAccessViewBlock(destination: AnyView(LoungeDetailView(address: "Gate W65, Hong Kong International Airport, Terminal 1, 6 Sky Plaza Rd, Lantau Island")), imageName: "plaza_premium_lounge",maxCapcity: 250,currentOccupation: 163, displayName: "Plaza Premium Lounge", distance: "0.8 km away");
         }
         
     }
@@ -29,7 +34,6 @@ struct FreeAccessViewBlock: View {
     
     
     @State private var occupationDisplayColor: Color
-
         
     init(
         destination: AnyView,
@@ -109,6 +113,6 @@ struct FreeAccessViewBlock: View {
 
 struct DisplayLoungeView_Previews: PreviewProvider {
     static var previews: some View {
-        DisplayLoungeView()
+        DisplayLoungeView(loungeList: SampleData().getData[0].loungeList)
     }
 }

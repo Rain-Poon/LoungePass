@@ -27,23 +27,25 @@ let grids = [
 
 struct LoungeDetailView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    let address: String
     
-        func openAppleMaps() {
-            let addressEncoded = address.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-            if let url = URL(string: "http://maps.apple.com/?address=" + addressEncoded) {
-                if UIApplication.shared.canOpenURL(url) {
-                    UIApplication.shared.open(url)
-                } else {
-                    // Handle the case where Apple Maps can't be opened (e.g., on a simulator)
-                    print("Apple Maps cannot be opened.")
-                }
+    let address: String
+    let lounge: Lounge
+    
+    func openAppleMaps() {
+        let addressEncoded = address.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        if let url = URL(string: "http://maps.apple.com/?address=" + addressEncoded) {
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url)
+            } else {
+                // Handle the case where Apple Maps can't be opened (e.g., on a simulator)
+                print("Apple Maps cannot be opened.")
             }
         }
+    }
     
     var body: some View {
         ScrollView {
-            topImage
+            topImage(name: lounge.displayName)
             VStack {
                 VStack (alignment: .leading) {
                     // Rating
@@ -52,7 +54,7 @@ struct LoungeDetailView: View {
                             Image(systemName: "star.fill")
                                 .foregroundColor(.yellow)
                         }
-                        Text("(4.9)")
+                        Text(lounge.numRaiting.description)
                             .opacity(0.5)
                             .padding(.leading, 8)
                         Spacer()
@@ -72,12 +74,12 @@ struct LoungeDetailView: View {
                     Button(action: {
                         openAppleMaps()
                     }) {
-                        Text("Address: \n\(address)")
+                        Text("Address: \n\(lounge.locationDescription)")
                             .multilineTextAlignment(.leading)
                     }
                     
-                    Text("Eligible Credit Cards:")
-                        .padding(.vertical, 1)
+//                    Text("Eligible Credit Cards:")
+//                        .padding(.vertical, 1)
                     HStack {
                         Image(systemName: "checkmark.circle")
                             .foregroundColor(Color.green)
@@ -87,7 +89,7 @@ struct LoungeDetailView: View {
                     }
                     Divider()
                     
-                    Text("A home away from home. Sink into our designer chairs, relax, and enjoy views of the runway and terminal interior. Stay connected.")
+                    Text(lounge.displayDescription)
                         .lineSpacing(8.0)
                         .opacity(0.6)
                 }
@@ -96,24 +98,24 @@ struct LoungeDetailView: View {
                 
                 .background(Color.white)
                 
-                facilitiesView
+                facilitiesView(availableFacilities: lounge.availableFacilities)
                 
-                Text("Facilities (Booking Required)")
-                    .padding([.top, .leading, .trailing])
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                Divider()
-                    .padding(.horizontal)
-                VStack(spacing: 10){
-                    HStack(){
-                        HStack(){
-                            Image(systemName:"person.fill")
-                            Text("Focus Rooms")
-                        }.frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment:.leading)
-                        Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-                            Text("Book")
-                        })
-                    }.padding([.leading, .trailing])
-                }
+//                Text("Facilities (Booking Required)")
+//                    .padding([.top, .leading, .trailing])
+//                    .frame(maxWidth: .infinity, alignment: .leading)
+//                Divider()
+//                    .padding(.horizontal)
+//                VStack(spacing: 10){
+//                    HStack(){
+//                        HStack(){
+//                            Image(systemName:"person.fill")
+//                            Text("Focus Rooms")
+//                        }.frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment:.leading)
+//                        Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+//                            Text("Book")
+//                        })
+//                    }.padding([.leading, .trailing])
+//                }
                 Text("Featured Photos")
                     .padding([.top, .leading, .trailing])
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -141,8 +143,8 @@ struct LoungeDetailView: View {
     }
 }
 
-var topImage: some View {
-    ZStack {
+func topImage(name: String) -> some View {
+    return ZStack {
         Image("cathay_lounge")
             .resizable(resizingMode: .stretch)
             .frame(height:250)
@@ -156,7 +158,7 @@ var topImage: some View {
             )
         VStack {
             Spacer()
-            Text("Cathay Lounge")
+            Text(name)
                 .font(.title)
                 .fontWeight(.bold)
                 .padding(.horizontal)
@@ -192,29 +194,61 @@ var featurePhotosView: some View {
     }
 }
 
-var facilitiesView: some View {
-    VStack {
-        Text("Facilities")
-            .padding(.horizontal)
-            .frame(maxWidth: .infinity, alignment: .leading)
-        Divider()
-            .padding(.horizontal)
-        LazyVGrid(columns: columns, spacing: 10) {
-            ForEach(0..<grids.count, id: \.self) { item in
-                HStack {
-                    Image(systemName: grids[item].0)
-                        .frame(width: 20)
-                    Text(grids[item].1)
+struct facilitiesView: View {
+    let availableFacilities: [Facility]
+    @State private var isPresentingFullView = false
+    var body: some View {
+        VStack {
+            Text("Facilities")
+                .padding(.horizontal)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            Divider()
+                .padding(.horizontal)
+            LazyVGrid(columns: columns, spacing: 10) {
+                ForEach(0..<availableFacilities.count, id: \.self) { index in
+                    HStack {
+                        //                    Image(systemName: grids[index].0)
+                        //                        .frame(width: 20)
+                        Button(availableFacilities[index].displayName){
+                            isPresentingFullView = true
+                        }
                         .opacity(0.7)
+                        .fullScreenCover(isPresented: $isPresentingFullView) {
+                            ScrollView {
+                                VStack{
+                                    Button {
+                                        isPresentingFullView = false
+                                    } label: {
+                                        Image(systemName: "plus.circle.fill")
+                                            .rotationEffect(.degrees(45))
+                                            .foregroundColor(.black)
+                                            .padding(.trailing)
+                                        
+                                    }
+                                    Text("Description")
+                                    Text(availableFacilities[index].description)
+                                    Text("Book")
+                                    ForEach(availableFacilities[index].availableTimeSlots)
+                                    {
+                                        timeSlot in
+                                        Text("\(timeSlot.startTime)-\(timeSlot.endTime)")
+                                    }
+                                }
+                            }
+                            .transition(.move(edge: .leading))
+                            
+                        }
+                    }
+                    
                 }
             }
+            .padding(.horizontal)
         }
-        .padding(.horizontal)
     }
 }
 
 struct LoungeDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        LoungeDetailView(address: "Gate W65, Hong Kong International Airport, Terminal 1, 6 Sky Plaza Rd, Lantau Island")
+        LoungeDetailView(address: "Gate W65, Hong Kong International Airport, Terminal 1, 6 Sky Plaza Rd, Lantau Island", lounge: SampleData().getData[0].loungeList[0])
     }
 }

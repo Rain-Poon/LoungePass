@@ -7,7 +7,7 @@
 
 import MapKit
 
-struct Lounge {
+struct Lounge: Identifiable {
     var displayName: String
     var openingHours: String
     var locationDescription: String
@@ -15,6 +15,5 @@ struct Lounge {
     var availableFacilities: [Facility]
     var displayDescription: String
     var loungeLocation :CLLocationCoordinate2D
-    
-    
+    var id = UUID()
 }

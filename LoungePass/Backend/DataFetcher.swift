@@ -15,10 +15,10 @@ class DataFetcher: ObservableObject {
     @Published var endpoint: String = ""
     @Published var views: [AnyView] = [
         AnyView(SelectLoungeView(airport: SampleData().getData[0])),
-        AnyView(LoungeDetailView(address: "Gate W65, Hong Kong International Airport, Terminal 1, 6 Sky Plaza Rd, Lantau Island", lounge: SampleData().getData[0].loungeList[0])),
-        AnyView(LoungeDetailView(address: "Gate W65, Hong Kong International Airport, Terminal 1, 6 Sky Plaza Rd, Lantau Island", lounge: SampleData().getData[0].loungeList[4])),
-        AnyView(LoungeDetailView(address: "Gate W65, Hong Kong International Airport, Terminal 1, 6 Sky Plaza Rd, Lantau Island", lounge: SampleData().getData[0].loungeList[2])),
-        AnyView(LoungeDetailView(address: "Gate W65, Hong Kong International Airport, Terminal 1, 6 Sky Plaza Rd, Lantau Island", lounge: SampleData().getData[0].loungeList[3])),
+        AnyView(LoungeDetailView(address: "Gate W65, Hong Kong International Airport, Terminal 1, 6 Sky Plaza Rd, Lantau Island", lounge: SampleData().getData[0].loungeList[0], occupy: Double(Int.random(in: 100..<250)), max: Double(Int.random(in: 200..<250)))),
+        AnyView(LoungeDetailView(address: "Gate W65, Hong Kong International Airport, Terminal 1, 6 Sky Plaza Rd, Lantau Island", lounge: SampleData().getData[0].loungeList[4], occupy: Double(Int.random(in: 100..<250)), max: Double(Int.random(in: 200..<250)))),
+        AnyView(LoungeDetailView(address: "Gate W65, Hong Kong International Airport, Terminal 1, 6 Sky Plaza Rd, Lantau Island", lounge: SampleData().getData[0].loungeList[2], occupy: Double(Int.random(in: 100..<250)), max: Double(Int.random(in: 200..<250)))),
+        AnyView(LoungeDetailView(address: "Gate W65, Hong Kong International Airport, Terminal 1, 6 Sky Plaza Rd, Lantau Island", lounge: SampleData().getData[0].loungeList[3], occupy: Double(Int.random(in: 100..<250)), max: Double(Int.random(in: 200..<250)))),
         AnyView(SelectLoungeView(airport: SampleData().getData[1]))
         
     ]
@@ -36,7 +36,7 @@ class DataFetcher: ObservableObject {
         timer?.invalidate()
         
         // Schedule a new timer to trigger the data fetch every 10 seconds
-        timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { [weak self] _ in
+        timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { [weak self] _ in
             self?.fetchData()
         }
         

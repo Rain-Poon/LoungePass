@@ -30,6 +30,9 @@ struct LoungeDetailView: View {
     
     let address: String
     let lounge: Lounge
+    let occupy: Double
+    let max: Double
+    @State private var occupationDisplayColor: Color = .white
     
     func openAppleMaps() {
         let addressEncoded = address.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
@@ -57,15 +60,22 @@ struct LoungeDetailView: View {
                         Text(lounge.numRaiting.description)
                             .opacity(0.5)
                             .padding(.leading, 8)
+                            .onAppear {
+                                if (occupy/max>0.5 && occupy/max<=0.8) {
+                                    occupationDisplayColor = Color.yellow
+                                } else if(occupy/max>0.8) {
+                                    occupationDisplayColor = Color.red
+                                }
+                            }
                         Spacer()
-                        Text("Capacity: 83/250")
+                        Text("Capacity: \(String(Int(occupy)))/\(String(Int(max)))")
                             .bold()
                             .foregroundColor(.white)
                             .fontWeight(.medium)
                             .padding(10)
                             .background(
                                 RoundedRectangle(cornerRadius: 20)
-                                    .fill(Color.green)
+                                    .fill(occupationDisplayColor)
                             )
                         
                         
@@ -366,6 +376,6 @@ struct facilitiesView: View {
 
 struct LoungeDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        LoungeDetailView(address: "Gate W65, Hong Kong International Airport, Terminal 1, 6 Sky Plaza Rd, Lantau Island", lounge: SampleData().getData[0].loungeList[0])
+        LoungeDetailView(address: "Gate W65, Hong Kong International Airport, Terminal 1, 6 Sky Plaza Rd, Lantau Island", lounge: SampleData().getData[0].loungeList[0], occupy: Double(Int.random(in: 100..<250)), max: Double(Int.random(in: 200..<250)))
     }
 }

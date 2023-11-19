@@ -45,7 +45,7 @@ struct NotificationPopUp: View {
                                         width: UIScreen.main.bounds.width * 0.9,
                                         height: UIScreen.main.bounds.height * 0.1
                                     )
-                                    .offset(x: UIScreen.main.bounds.width * 0.4, y: -UIScreen.main.bounds.height * 0.02)
+                                    .offset(x: UIScreen.main.bounds.width * 0.4, y: -UIScreen.main.bounds.height * 0.025)
                                     VStack() {
                                         Text(dataFetcher.text)
                                             .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)

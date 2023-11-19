@@ -14,7 +14,9 @@ struct DisplayLoungeView: View {
 //        NavigationView {
             ScrollView {
                 ForEach(0..<loungeList.count, id: \.self){index in
-                    FreeAccessViewBlock(destination: AnyView(LoungeDetailView(address: loungeList[index].locationDescription, lounge: loungeList[index])), imageName: "cathay_lounge", maxCapcity: 250, currentOccupation: 83, displayName: loungeList[index].displayName, distance: loungeList[index].locationDescription)
+                    let occupy = Double(Int.random(in: 100..<250))
+                    let max = Double(Int.random(in: 200..<250))
+                    FreeAccessViewBlock(destination: AnyView(LoungeDetailView(address: loungeList[index].locationDescription, lounge: loungeList[index], occupy: occupy, max: max)), imageName: "cathay_lounge", maxCapcity: max, currentOccupation: occupy, displayName: loungeList[index].displayName, distance: loungeList[index].locationDescription)
                 }
                 
 //                FreeAccessViewBlock(destination: AnyView(LoungeDetailView(address: "Gate W65, Hong Kong International Airport, Terminal 1, 6 Sky Plaza Rd, Lantau Island")), imageName: "cathay_lounge", maxCapcity: 250, currentOccupation: 82, displayName: "Cathay Lounge", distance: "0.5 km away");
